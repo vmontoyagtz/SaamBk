@@ -1,0 +1,159 @@
+What is the main purpose of Ardalis ApiEndpoints library?
+a) To create a domain-driven design architecture for a C# application
+b) To define HTTP endpoints for an API in a clean and consistent way
+c) To provide a tool for database management in a C# application
+d) To simplify unit testing in a C# application
+Correct answer: b) To define HTTP endpoints for an API in a clean and consistent way. The Ardalis ApiEndpoints library provides a way to define HTTP endpoints in a consistent and organized manner, with a focus on clean architecture and domain-driven design principles.
+What is an ApiEndpoint in the Ardalis ApiEndpoints library?
+a) A class that defines an HTTP endpoint for an API
+b) A database table that stores information about API endpoints
+c) A middleware component that manages API requests and responses
+d) A tool for generating API documentation
+Correct answer: a) A class that defines an HTTP endpoint for an API. An ApiEndpoint in the Ardalis ApiEndpoints library is a class that defines an HTTP endpoint, including the HTTP method, URL, and request/response parameters.
+What is the role of a Request or Response DTO in the Ardalis ApiEndpoints library?
+a) To define the structure of a request or response for an HTTP endpoint
+b) To manage database queries and updates for an HTTP endpoint
+c) To implement authentication and authorization for an HTTP endpoint
+d) To handle error responses for an HTTP endpoint
+Correct answer: a) To define the structure of a request or response for an HTTP endpoint. Request and Response DTOs in the Ardalis ApiEndpoints library are used to define the structure of the data that will be sent or received in an HTTP request or response.
+Which of the following is NOT a benefit of using the Ardalis ApiEndpoints library?
+a) Consistent and organized definition of HTTP endpoints
+b) Simplified unit testing
+c) Improved performance for API requests
+d) Enhanced maintainability and scalability of the API
+Correct answer: c) Improved performance for API requests. While the Ardalis ApiEndpoints library provides many benefits, it does not directly improve the performance of API requests.
+Which layer of the clean architecture does the Ardalis ApiEndpoints library primarily focus on?
+a) Domain layer
+b) Application layer
+c) Infrastructure layer
+d) Presentation layer
+Correct answer: b) Application layer. The Ardalis ApiEndpoints library provides a consistent and organized way to define HTTP endpoints in the application layer of a clean architecture, while adhering to domain-driven design principles.
+What is the recommended approach for handling errors in the Ardalis ApiEndpoints library?
+a) Return HTTP status codes to indicate the type of error that occurred
+b) Throw exceptions to be caught by middleware components
+c) Log errors to a file or database for later analysis
+d) Return generic error messages without specific details
+Correct answer: a) Return HTTP status codes to indicate the type of error that occurred. The Ardalis ApiEndpoints library recommends returning HTTP status codes to indicate the type of error that occurred, along with optional error details in the response body.
+What is the role of a Validator in the Ardalis ApiEndpoints library?
+a) To verify that incoming data meets the required format and constraints
+b) To manage authorization and access control for an API endpoint
+c) To generate documentation for API endpoints
+d) To handle exceptions that occur during API requests
+Correct answer: a) To verify that incoming data meets the required format and constraints. A Validator in the Ardalis ApiEndpoints library is used to validate incoming data, ensuring
+What is the purpose of the Map method in the Endpoint class?
+a) To map the input model to the output model
+b) To map the output model to the input model
+c) To map the entity to the output model
+d) To map the output model to the entity
+Answer: d) To map the output model to the entity. The Map method is used to map the output model to the entity returned from the database.
+Which method should be overridden in the Endpoint class to customize the response?
+a) Execute
+b) Map
+c) Include
+d) Handle
+Answer: b) Map. The Map method is used to customize the response by mapping the output model to the entity returned from the database.
+What is the purpose of the Handle method in the Endpoint class?
+a) To handle exceptions that occur during the execution of the endpoint
+b) To handle input validation for the endpoint
+c) To handle authorization for the endpoint
+d) To handle logging for the endpoint
+Answer: a) To handle exceptions that occur during the execution of the endpoint. The Handle method is used to catch and handle any exceptions that occur during the execution of the endpoint.
+The Handle method in the Endpoint class is responsible for executing the logic of the endpoint. It is the method that actually handles the request and produces the response. Unlike the Handle method used in MediatR, which is used to process a request and return a result, the Handle method in the Endpoint class is used to handle exceptions that may occur during the execution of the endpoint.
+When an endpoint is executed, it may encounter errors or exceptions that need to be handled in a specific way. The Handle method is designed to catch and handle these exceptions, allowing the endpoint to gracefully handle errors and return appropriate responses to the client.
+What is the purpose of the Ardalis.ApiEndpoints library?
+a) To provide an opinionated approach to writing HTTP-based APIs.
+b) To provide a framework for creating UI components in C#.
+c) To provide a set of tools for working with databases in .NET.
+d) To provide a set of guidelines for building microservices.
+Answer: a) To provide an opinionated approach to writing HTTP-based APIs.
+Explanation: The Ardalis.ApiEndpoints library is designed to simplify the creation of HTTP-based APIs in .NET by providing a set of opinionated guidelines and tools.
+Which design pattern does the Ardalis.ApiEndpoints library encourage the use of?
+a) The Repository pattern
+b) The Command pattern
+c) The Decorator pattern
+d) The Strategy pattern
+Answer: b) The Command pattern
+Explanation: The Ardalis.ApiEndpoints library is built around the Command pattern, which encapsulates a single operation as an object that can be passed around and executed.
+What is the role of the IRequest and IResponse interfaces in the Ardalis.ApiEndpoints library?
+a) They define the input and output models for API endpoints.
+b) They provide a way to handle errors and exceptions in API endpoints.
+c) They define the routing and URL structure for API endpoints.
+d) They allow API endpoints to interact with databases and other data sources.
+Answer: a) They define the input and output models for API endpoints.
+Explanation: The IRequest and IResponse interfaces are used to define the input and output models for API endpoints in the Ardalis.ApiEndpoints library.
+The library is focused on providing a clean and simple approach to building API endpoints using domain-driven design principles.
+The IRequest and IResponse interfaces in the Ardalis.ApiEndpoints library are used to define the input and output models for API endpoints. These interfaces allow for a consistent and standardized way of defining the data that will be sent to and received from API endpoints. This makes it easier to build and maintain a clean and modular architecture for your API. It's important to note that while these interfaces may have similar names to those used in MediatR, they are separate and not dependent on MediatR.
+What is the purpose of the Ardalis.ApiEndpoints library?
+a) To provide an opinionated approach to writing HTTP-based APIs.
+b) To provide a framework for creating UI components in C#.
+c) To provide a set of tools for working with databases in .NET.
+d) To provide a set of guidelines for building microservices.
+Answer: a) To provide an opinionated approach to writing HTTP-based APIs.
+Explanation: The Ardalis.ApiEndpoints library is designed to simplify the creation of HTTP-based APIs in .NET by providing a set of opinionated guidelines and tools.
+Which design pattern does the Ardalis.ApiEndpoints library encourage the use of?
+a) The Repository pattern
+b) The Command pattern
+c) The Decorator pattern
+d) The Strategy pattern
+Answer: b) The Command pattern
+Explanation: The Ardalis.ApiEndpoints library is built around the Command pattern, which encapsulates a single operation as an object that can be passed around and executed.
+What is the role of the IRequest and IResponse interfaces in the Ardalis.ApiEndpoints library?
+a) They define the input and output models for API endpoints.
+b) They provide a way to handle errors and exceptions in API endpoints.
+c) They define the routing and URL structure for API endpoints.
+d) They allow API endpoints to interact with databases and other data sources.
+Answer: a) They define the input and output models for API endpoints.
+Explanation: The IRequest and IResponse interfaces are used to define the input and output models for API endpoints in the Ardalis.ApiEndpoints library.
+The IRequest and IResponse interfaces in the Ardalis.ApiEndpoints library are used to define the input and output models for API endpoints. These interfaces allow for a consistent and standardized way of defining the data that will be sent to and received from API endpoints. This makes it easier to build and maintain a clean and modular architecture for your API. It's important to note that while these interfaces may have similar names to those used in MediatR, they are separate and not dependent on MediatR.
+How does the Ardalis.ApiEndpoints library handle validation of input data?
+a) It provides a built-in validation framework that can be used to validate input data.
+b) It relies on third-party libraries, FluentValidation, Guard.Clauses, plus specific logic on the domain entity to handle input validation.
+c) It does not handle input validation and leaves it up to the user.
+d) It uses regular expressions to validate input data.
+Answer: b) It relies on the domain entity to handle input validation.
+Explanation: The Ardalis.ApiEndpoints library does not provide its own built-in validation framework, but instead relies on the entity to handle input validation.
+What is the purpose of the BaseEndpoint abstract class in the Ardalis.ApiEndpoints library?
+a) To provide a common interface for all API endpoints in the library.
+b) To implement the Command pattern and simplify the creation of API endpoints.
+c) To handle routing and URL structure for API endpoints.
+d) To provide a set of guidelines for writing clean and maintainable API code.
+Answer: b) To implement the Command pattern and simplify the creation of API endpoints.
+Explanation: The BaseEndpoint abstract class provides a common implementation of the Command pattern and simplifies the creation of API endpoints in the Ardalis.ApiEndpoints library.
+How does the Ardalis.ApiEndpoints library handle authentication and authorization for API endpoints?
+a) It provides a built-in authentication and authorization framework that can be used to secure API endpoints.
+b) It relies on third-party libraries such as IdentityServer4 to handle authentication and authorization.
+c) It does not handle authentication and authorization and leaves it up to the user.
+d) It uses JSON Web Tokens (JWTs) to handle authentication and authorization.
+Answer: c) It does not handle authentication and authorization and leaves it up to the user.
+Explanation: The Ardalis.ApiEndpoints library does not provide its own built-in authentication and authorization framework, but leaves it up to the user to implement these features.
+What is the purpose of the EndpointDecorator abstract class in the Ardalis.ApiEndpoints library?
+a) It provides a way to decorate API endpoints with additional behavior such as caching or logging.
+b) It handles exceptions that occur during the execution of the endpoint.
+c) It defines the input and output models for API endpoints.
+d) It provides a way to validate input data for API endpoints.
+Answer: a) It provides a way to decorate API endpoints with additional behavior such as caching or logging. The EndpointDecorator abstract class allows developers to add additional behavior to API endpoints without modifying the original implementation.
+Which of the following is true about ApiEndpoints?
+a) ApiEndpoints provide a way to handle API endpoints without using controllers
+b) ApiEndpoints can only be used with ASP.NET Web API
+c) ApiEndpoints are designed to replace all existing controllers in your project
+d) ApiEndpoints require an additional license to use
+Correct answer: a) ApiEndpoints provide a way to handle API endpoints without using controllers
+Explanation: ApiEndpoints provide an alternative way to handle API endpoints without using controllers, which can lead to cleaner and more maintainable code. It is not limited to ASP.NET Web API and can be used with any framework that supports routing. It is not designed to replace all existing controllers, but rather to provide an alternative solution for handling endpoints. There is no additional license required to use ApiEndpoints, as it is an open-source library.
+Which of the following is NOT a benefit of using the Ardalis.ApiEndpoints library?
+a) Encourages separation of concerns
+b) Simplifies route configuration
+c) Provides automatic documentation generation
+d) Enables database migrations
+Correct answer: d) Enables database migrations. While the library provides many benefits, enabling database migrations is not one of them.
+Which of the following HTTP status codes would typically be returned when a resource is not found?
+a) 200 OK
+b) 201 Created
+c) 404 Not Found
+d) 500 Internal Server Error
+Correct answer: c) 404 Not Found. This is the standard HTTP status code used to indicate that a resource could not be found at the requested URI.
+Which of the following HTTP methods should be used to update an existing resource?
+a) GET
+b) POST
+c) PUT
+d) DELETE
+Correct answer: c) PUT. The HTTP PUT method should be used to update an existing resource, while the HTTP POST method is typically used to create new resources.

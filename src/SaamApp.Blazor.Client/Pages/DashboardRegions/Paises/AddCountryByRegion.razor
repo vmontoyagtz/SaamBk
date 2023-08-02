@@ -1,0 +1,81 @@
+﻿@page "/crear-pais/{regionId}"
+@layout RegionsMainLayout
+<PageTitle>Crear Pais - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="@($"dashboard-region/{regionId}")">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="@($"paises/{regionId}")">
+                                    Paises
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Crear Pais</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <EditForm Model="@packageModel">
+                                <DataAnnotationsValidator />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Nombre del Pais'
+                                                       FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="packageModel.PackageName"></SfTextBox>
+                                            <ValidationMessage For="@(() => packageModel.PackageName)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Código Pais'
+                                                       FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="packageModel.PackagePrice"></SfTextBox>
+                                            <ValidationMessage For="@(() => packageModel.PackagePrice)"></ValidationMessage>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-md-4">
+                                            <button type="button" class="cerrar" @click="back">Cancelar</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <SfButton class="añadir">Crear</SfButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code {
+    [Parameter]
+    public string regionId { get; set; }
+
+    private PackageDetails packageModel = new PackageDetails();
+    public class PackageDetails
+    {
+        [Required(ErrorMessage = "Please enter {0}.")]
+        public string PackageName { get; set; }
+        [Required(ErrorMessage = "Please enter {0}.")]
+        public string PackagePrice { get; set; }
+        [Required(ErrorMessage = "Please enter {0}.")]
+        public string PackageStatus { get; set; }
+    }
+}

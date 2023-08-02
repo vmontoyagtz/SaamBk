@@ -1,0 +1,109 @@
+@page "/paises/{regionId}"
+@layout RegionsMainLayout
+<PageTitle>Paises - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="@($"dashboard-region/{regionId}")">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Paises</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    <div class="row">
+                        @if (Countries != null && Countries.Any())
+                        {
+                            @foreach (var country in Countries)
+                            {
+                                <div class="col-lg-4 mb-4">
+                                    <SfCard ID="HugeImage" Orientation="CardOrientation.Vertical">
+                                        <NavLink class="nav-link" href="@($"dashboard-pais/{country.CountryId}")">
+                                            <CardImage Image="@($"images/{country.CountryName}.png")"></CardImage>
+                                        </NavLink>
+                                        <CardContent>
+                                            <div class="row">
+                                                <center>
+                                                    <NavLink class="nav-link" href="@($"dashboard-pais/{country.CountryId}")">
+                                                        <h6>@country.CountryName</h6>
+                                                    </NavLink>
+                                                </center>
+                                            </div>
+                                        </CardContent>
+                                    </SfCard>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <i class="fas fa-spinner fa-spin"></i>
+                        }
+                        <div class="col-lg-4 mb-4">
+                            <SfCard ID="HugeImage" Orientation="CardOrientation.Vertical">
+                                <NavLink class="nav-link" href="@($"crear-pais/{regionId}")">
+                                    <CardImage Image="images/plus2.png"></CardImage>
+                                </NavLink>
+                                <CardContent>
+                                    <div class="row">
+                                        <center>
+                                            <NavLink class="nav-link" href="@($"crear-pais/{regionId}")">
+                                                <h6>Ingresar Nuevo Pais</h6>
+                                            </NavLink>
+                                        </center>
+                                    </div>
+                                </CardContent>
+                            </SfCard>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@using SaamApp.BlazorMauiShared.Models.Country;
+@using SaamApp.Domain.ModelsDto
+@using Newtonsoft.Json.Linq
+@code {
+    [Parameter]
+    public string regionId { get; set; }
+
+    public List<CountryDto> Countries { get; set; }
+    protected int count;
+    protected override async Task OnInitializedAsync()
+    {
+        using var client = new HttpClient();
+        try
+        {
+            Countries = new List<CountryDto>();
+
+            var response = await client.GetFromJsonAsync<ListCountryResponse>($"https://localhost:5257/api/getcountriesbyregionid/{regionId}");
+            if (response != null && response.Countries.Any())
+            {
+                Countries = response.Countries;
+            }
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+
+    protected async Task Grid0LoadData(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        using var client = new HttpClient();
+        try
+        {
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+}

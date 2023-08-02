@@ -1,0 +1,159 @@
+@page "/edit-advisor-demo"
+@using SaamApp.Domain.ModelsDto
+@layout AdMainLayout
+<PageTitle>Edit Advisor - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row justify-content-center">
+               
+                
+                <div class="col-md-12">
+    <SfToast Title="Error" Content="Cannot save Advisor" IsVisible="@errorVisible" ShowCloseButton="true" ShowProgressBar="false"></SfToast>
+    <EditForm Model="@advisor" OnValidSubmit="@FormSubmit">
+        <DataAnnotationsValidator />
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="AdvisorFirstName">Advisor First Name</label>
+            </div>
+            <div class="col-md-9">
+                <SfTextBox @bind-Value="@advisor.AdvisorFirstName" Placeholder="Advisor First Name" FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                <ValidationMessage For="@(() => advisor.AdvisorFirstName)" />
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="AdvisorLastName">Advisor Last Name</label>
+            </div>
+            <div class="col-md-9">
+                <SfTextBox @bind-Value="@advisor.AdvisorLastName" Placeholder="Advisor Last Name" FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                <ValidationMessage For="@(() => advisor.AdvisorLastName)" />
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="AdvisorNote">Advisor Note</label>
+            </div>
+            <div class="col-md-9">
+                <SfTextBox @bind-Value="@advisor.AdvisorNote" Placeholder="Advisor Note" FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="AdvisorTitle">Advisor Title</label>
+            </div>
+            <div class="col-md-9">
+                <SfTextBox @bind-Value="@advisor.AdvisorTitle" Placeholder="Advisor Title" FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                <ValidationMessage For="@(() => advisor.AdvisorTitle)" />
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="AdvisorJsonResume">Advisor Json Resume</label>
+            </div>
+            <div class="col-md-9">
+                <SfTextBox @bind-Value="@advisor.AdvisorJsonResume" Placeholder="Advisor Json Resume" FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                <ValidationMessage For="@(() => advisor.AdvisorJsonResume)" />
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="IsNaturalPerson">Is Natural Person</label>
+            </div>
+            <div class="col-md-9">
+                <SfCheckBox @bind-Checked="@advisor.IsNaturalPerson"></SfCheckBox>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="CreatedAt">Created At</label>
+            </div>
+            <div class="col-md-9">
+                <SfDatePicker Format="MM/dd/yyyy" @bind-Value="@advisor.CreatedAt"></SfDatePicker>
+                <ValidationMessage For="@(() => advisor.CreatedAt)" />
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="UpdatedAt">Updated At</label>
+            </div>
+            <div class="col-md-9">
+                <SfDatePicker Format="MM/dd/yyyy" @bind-Value="@advisor.UpdatedAt"></SfDatePicker>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="IsDeleted">Is Deleted</label>
+            </div>
+            <div class="col-md-9">
+                <SfCheckBox @bind-Checked="@advisor.IsDeleted"></SfCheckBox>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="BusinessUnitId">Business Unit</label>
+            </div>
+            <div class="col-md-9">
+                <SfDropDownList DataSource="@businessUnitsForBusinessUnitId" Placeholder="Choose BusinessUnit" ></SfDropDownList>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="GenderId">Gender</label>
+            </div>
+            <div class="col-md-9">
+                <SfDropDownList DataSource="@gendersForGenderId" Placeholder="Choose Gender" ></SfDropDownList>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="PaymentFrequencyId">Payment Frequency</label>
+            </div>
+            <div class="col-md-9">
+                <SfDropDownList DataSource="@paymentFrequenciesForPaymentFrequencyId" Placeholder="Choose PaymentFrequency"></SfDropDownList>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1rem">
+            <div class="col-md-3">
+                <label for="TaxInformationId">Tax Information</label>
+            </div>
+            <div class="col-md-9">
+                <SfDropDownList DataSource="@taxInformationsForTaxInformationId" Placeholder="Choose TaxInformation"></SfDropDownList>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <SfButton Type="Submit" CssClass="e-primary" Content="Save" />
+            <SfButton CssClass="e-outline" Content="Cancel" @onclick="@CancelButtonClick" />
+        </div>
+    </EditForm>
+</div>
+
+
+            </div>
+        </div>
+    </section>
+</div>
+@code{
+    // Replace with your actual model
+    private AdvisorDto advisor = new AdvisorDto();
+
+    // Replace with your actual data
+    private List<BusinessUnitDto> businessUnitsForBusinessUnitId = new List<BusinessUnitDto>();
+    private List<GenderDto> gendersForGenderId = new List<GenderDto>();
+    private List<PaymentFrequencyDto> paymentFrequenciesForPaymentFrequencyId = new List<PaymentFrequencyDto>();
+    private List<TaxInformationDto> taxInformationsForTaxInformationId = new List<TaxInformationDto>();
+
+    // Replace with your actual logic
+    private bool errorVisible = false;
+
+    private void FormSubmit()
+    {
+    // Add your form submission logic here
+    }
+
+    private void CancelButtonClick()
+    {
+    // Add your cancel button click logic here
+    }
+}

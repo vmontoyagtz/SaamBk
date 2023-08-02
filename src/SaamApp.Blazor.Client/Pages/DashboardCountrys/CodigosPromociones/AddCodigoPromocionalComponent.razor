@@ -1,0 +1,96 @@
+@page "/crear-codigo-promocional/{countryId}"
+<PageTitle>Crear Código Promocional By El Salvador</PageTitle>
+<div id="mantenimiento">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="codigos-promocionales">
+                                    Códigos Promocionales
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active"><a>Crear</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <EditForm Model="@giftCodePromoModel">
+                                <DataAnnotationsValidator /> 
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Nombre Código' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="giftCodePromoModel.GiftCodePromName"
+                                            ></SfTextBox>
+                                            <ValidationMessage For="@(() => giftCodePromoModel.GiftCodePromName)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Código Promoción' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="giftCodePromoModel.GiftCodePromCode"
+                                            ></SfTextBox>
+                                            <ValidationMessage For="@(() => giftCodePromoModel.GiftCodePromCode)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <div class="input-group mx-auto">
+                                               <SfTextBox Placeholder='Porcentaje Descuento %' 
+                                                FloatLabelType='@FloatLabelType.Auto'
+                                                @bind-Value="giftCodePromoModel.GiftCodePromDescuento"
+                                                ></SfTextBox>
+                                                <ValidationMessage For="@(() => giftCodePromoModel.GiftCodePromDescuento)"></ValidationMessage>
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6 mx-auto">
+                                                <div class="input-group">
+                                                    <SfDateRangePicker TValue="DateTime?" Format="dd/MM/yyyy" Placeholder="Selecciona fechas"
+                                                    Min="@MinDate"></SfDateRangePicker>
+                                                </div>
+                                            </div>
+                                    <div class="row justify-content-evenly">
+                                            <div class="col-md-4">
+                                            <button type="button" class="cerrar" @click="back">Cancelar</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <SfButton class="añadir">Crear</SfButton>
+                                            </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code {
+    public DateTime MinDate {get;set;} = DateTime.Now;
+    private GiftCodePromoDetails giftCodePromoModel = new GiftCodePromoDetails();
+    public class GiftCodePromoDetails
+    {
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string GiftCodePromName { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string GiftCodePromCode { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string GiftCodePromDescuento { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string GiftCodePromStartEndDates { get; set; }
+    }
+}

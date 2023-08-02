@@ -1,0 +1,106 @@
+﻿@page "/codigos-promocionales/{countryId}"
+<PageTitle>Códigos Promocionales By El Salvador</PageTitle>
+<div id="mantenimiento">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active"><a>Códigos Promocionales</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    @{
+                        var Tool = (new List<string>() { "Search","PdfExport","ExcelExport" });
+                    }
+                    <NavLink class="btn-tabla nav-link" href="crear-codigo-promocional">
+                        Crear<i class="fas fa-plus-circle fa-1.5x icon-add"></i>
+                    </NavLink>
+                    <SfGrid DataSource="@Advisors" AllowPaging="true" Toolbar="@Tool" AllowPdfExport="true" AllowExcelExport="true">
+                        <GridPageSettings PageSize="5"></GridPageSettings>
+                        <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="Advisor"></GridEvents>
+                        <GridColumns>
+                            <GridColumn Field=@nameof(Advisor.AdvisorFirstName) HeaderText="Nombre Código" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorLastName) HeaderText="Código" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorLastName) HeaderText="% de Descuento" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorTitle) HeaderText="Fecha Creación" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorTitle) HeaderText="Fecha Inicio" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorTitle) HeaderText="Fecha Fin" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorLastName) HeaderText="Status" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn HeaderText="Acciones" TextAlign="TextAlign.Center">
+                                <Template Context="grid">
+                                    <div class="acciones">
+                                        <NavLink class="nav-link" href="editar-asesor-padre">
+                                            Editar
+                                        </NavLink>
+                                    </div>
+                                </Template>
+                            </GridColumn>    
+                        </GridColumns>
+                    </SfGrid>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@using System
+@using System.Collections.Generic
+@using System.ComponentModel.DataAnnotations
+@using System.Linq
+@code{
+    public List<Advisor> Advisors { get; set; }
+    private SfGrid<Advisor> DefaultGrid;
+    protected override void OnInitialized()
+    {
+        Advisors = Enumerable.Range(1, 5).Select(x => new Advisor()
+        {
+        }).ToList();
+    }
+    public async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+       if (args.Item.Id == "Grid_pdfexport")
+        {
+            await this.DefaultGrid.PdfExport();
+        }
+    }
+    public class Advisor
+    {
+        [Required(ErrorMessage="Advisor First Name is required")]
+        [MaxLength(191)]
+        public string AdvisorFirstName { get;  set; }
+        [Required(ErrorMessage="Advisor Last Name is required")]
+        [MaxLength(191)]
+        public string AdvisorLastName { get;  set; }
+        [MaxLength(500)]
+        public string? AdvisorNote { get;  set; }
+        [Required(ErrorMessage="Advisor Title is required")]
+        [MaxLength(255)]
+        public string AdvisorTitle { get;  set; }
+        [Required(ErrorMessage="Is Natural Person is required")]
+        public bool IsNaturalPerson { get;  set; }
+        [Required(ErrorMessage="Created At is required")]
+        public DateTime CreatedAt { get;  set; }
+        [Required(ErrorMessage="Created By is required")]
+        public Guid CreatedBy { get;  set; }
+        public DateTime? UpdatedAt { get;  set; }
+        public Guid? UpdatedBy { get;  set; }
+        public bool? IsDeleted { get;  set; }
+        [Required(ErrorMessage="Business Unit is required")]
+        public Guid BusinessUnitId { get;  set; }
+        [Required(ErrorMessage="Gender is required")]
+        public Guid GenderId { get;  set; }
+        [Required(ErrorMessage="Payment Frequency is required")]
+        public Guid PaymentFrequencyId { get;  set; }
+        [Required(ErrorMessage="Tax Information is required")]
+        public Guid TaxInformationId { get;  set; }
+    }
+}

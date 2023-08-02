@@ -1,0 +1,114 @@
+version: "3.9"
+
+services:
+# http://localhost:8088 in your browser.
+# docker-compose exec superset superset fab create-admin
+# Username: OscarAdmin
+# Password: Password1
+## https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+# https://superset.apache.org/docs/intro
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    command: >
+      bash -c "flask db upgrade && superset init && superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger"
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SUPERSET_ENV=production
+      - SUPERSET_LOAD_EXAMPLES=yes
+      - SUPERSET_USERNAME=oscaradmin
+      - SUPERSET_PASSWORD=Password1
+      - SUPERSET_FIRST_NAME=Oscar
+      - SUPERSET_LAST_NAME=Agreda
+      - SUPERSET_EMAIL=admin@example.com
+      - SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/${POSTGRES_DB}
+      - SUPERSET_CONFIG_PATH=/app/superset_config.py
+    volumes:
+      - ./superset_config.py:/app/superset_config.py
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - 8088:8088
+    networks:
+      - my_network
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis
+    volumes:
+      - redis_data:/data
+    networks:
+      - my_network
+
+  cassandra:
+    image: cassandra:latest
+    container_name: 'cassandra'
+    ports:
+      - "9042:9042"
+    environment:
+      CASSANDRA_START_RPC: "true"
+      CASSANDRA_CLUSTER_NAME: "Test Cluster"
+#    entrypoint:
+#      - /bin/sh
+#      - -c
+#      - './wait-for-it.sh localhost:9042 --timeout=60 --strict -- /usr/local/bin/cqlsh -f /init_keyspace.cql && exec /docker-entrypoint.sh cassandra -f'
+    volumes:
+#      - ./wait-for-it.sh:/wait-for-it.sh
+#      - ./init_keyspace.cql:/init_keyspace.cql
+      - cassandra-data:/var/lib/cassandra
+    networks:
+      - my_network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: 'zookeeper'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - my_network
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: 'kafka'
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-localhost}:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+    networks:
+      - my_network
+
+volumes:
+  postgres_data:
+  redis_data:
+  cassandra-data:
+
+networks:
+  my_network:
+    driver: bridge

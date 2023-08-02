@@ -1,0 +1,9 @@
+Metabase (https://www.metabase.com/): A user-friendly, open-source data visualization tool that allows you to create custom dashboards and visualizations with a simple, intuitive interface. It supports various data sources like MySQL, PostgreSQL, MongoDB, and more.
+
+Redash (https://redash.io/): Redash is an open-source tool for teams to query, visualize, and collaborate on data. It comes with a powerful query editor, supports multiple data sources, and offers a wide range of visualization options.
+
+Grafana (https://grafana.com/): Grafana is an open-source platform for monitoring and observability. While it is primarily used for time-series data, it also supports other data sources and offers various visualization options, making it suitable for business intelligence and analytics use cases.
+
+Kibana (https://www.elastic.co/kibana): Kibana is an open-source data visualization and exploration platform designed to work with Elasticsearch. It allows you to search, view, and interact with data stored in Elasticsearch indices, making it ideal for log and event data analysis.
+
+Jupyter Notebook (https://jupyter.org/): Jupyter Notebook is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. While not specifically designed for business intelligence, it can be a powerful tool for data exploration, visualization, and analysis.

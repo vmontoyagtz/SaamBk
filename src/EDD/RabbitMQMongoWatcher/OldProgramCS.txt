@@ -1,0 +1,36 @@
+using RabbitMQMongoWatcher;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+var startup = new Startup(builder.Configuration);
+startup.ConfigureServices(builder.Services); // calling ConfigureServices method
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+//https://www.c-sharpcorner.com/article/how-to-add-startup-cs-class-in-asp-net-core-6-project/
+startup.Configure(app, builder.Environment); // calling Configure method
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+//https://masstransit.io/documentation/configuration/persistence/mongodb
+//https://masstransit.io/documentation/transports/rabbitmq
+//https://masstransit.io/quick-starts/rabbitmq

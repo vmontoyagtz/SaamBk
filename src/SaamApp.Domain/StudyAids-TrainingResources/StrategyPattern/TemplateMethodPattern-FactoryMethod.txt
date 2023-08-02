@@ -1,0 +1,47 @@
+﻿Factory Method Design Pattern:
+The Factory Method design pattern is a creational pattern that provides an interface for creating objects,
+but allows subclasses to alter the type of objects that are created. This pattern is useful when you want
+to decouple the creation of objects from the rest of the codebase, and when you want to make your code more
+flexible and extensible. In the context of C# Clean Architecture, the Factory Method pattern can be used to
+create objects that are used throughout the codebase, without tying the codebase to a specific class or implementation.
+Analogy:
+A real-life analogy for the Factory Method pattern could be a restaurant kitchen. The chef creates a menu
+of dishes, but the kitchen staff prepares the dishes based on customer orders. The chef doesn't need to
+know the specific details of how each dish is prepared, but they provide the recipes and ingredients for
+the kitchen staff to follow. In this analogy, the chef is the creator class, the dishes are the products,
+and the kitchen staff are the concrete creator subclasses.
+Template Method Design Pattern:
+The Template Method design pattern is a behavioral pattern that defines the steps of an algorithm,
+but allows subclasses to override certain steps without changing the overall structure of the algorithm.
+This pattern is useful when you want to define a common algorithm that is used by multiple classes,
+but you want to allow some variation in the implementation of certain steps. In the context of C# Clean Architecture,
+the Template Method pattern can be used to define the overall structure of an operation or process,
+while allowing subclasses to customize specific steps in the process.
+Analogy:
+A real-life analogy for the Template Method pattern could be a construction project.
+The architect creates a blueprint for the building, which outlines the overall structure and design.
+However, the construction crew has some flexibility in how they execute the plan. For example,
+they may choose different materials or construction techniques based on the specific site conditions.
+In this analogy, the architect is the abstract class, the building is the final product,
+and the construction crew are the concrete subclasses.
+Differences:
+The main difference between the Factory Method and Template Method patterns is that the Factory Method
+pattern is used to create objects, while the Template Method pattern is used to define the steps of an algorithm.
+The restaurant kitchen and construction project analogies illustrate this difference. In the restaurant kitchen,
+the chef provides the recipe and ingredients for the kitchen staff to follow, which is analogous to the
+Factory Method pattern. In the construction project, the architect provides the overall blueprint and design,
+which is analogous to the Template Method pattern. In both patterns, subclasses can customize the implementation
+to some degree, but the purpose and context of the patterns are different.
+The main differences between these patterns are:
+Purpose: The Template Method pattern is used to define the structure of an algorithm while allowing
+for variations in its implementation. The Event Sourcing pattern is used to record and reconstruct
+application state over time, while the Observer pattern is used to automatically notify dependent
+objects of state changes.
+Scope: The Template Method pattern is focused on a single class and its variations,
+while the Event Sourcing pattern is an architectural pattern that affects how an entire
+application is designed and developed. The Observer pattern is focused on the relationship
+between a subject and its observers.
+Implementation: The Template Method pattern uses inheritance and abstract methods to
+define a structure for algorithm implementation. The Event Sourcing pattern involves
+storing and retrieving event objects to recreate application state. The Observer pattern
+uses the subject-observer relationship and event handling to notify observers of state changes.

@@ -1,0 +1,32 @@
+﻿Adapter Design Pattern:
+The Adapter design pattern is a structural pattern that allows two incompatible interfaces to work together.
+This pattern is useful when you have an existing class or interface that you want to use in a new context,
+but it doesn't match the required interface. In the context of C# Clean Architecture, the Adapter pattern
+can be used to wrap an existing class or interface with a new interface that is compatible with the rest of the codebase.
+Analogy:
+A real-life analogy for the Adapter pattern could be a universal power adapter for electronic devices.
+When you travel to a new country, the electrical outlets may be different, and your device's plug may not fit.
+However, you can use a universal power adapter to connect your device to the foreign outlet.
+The adapter acts as a bridge between the incompatible interfaces, allowing them to work together.
+Decorator Design Pattern:
+The Decorator design pattern is a structural pattern that allows you to add functionality
+to an object at runtime, without changing its underlying structure. This pattern is useful
+when you want to extend the behavior of an object without subclassing or modifying its code.
+In the context of C# Clean Architecture, the Decorator pattern can be used to add functionality
+to an object by wrapping it with one or more decorator objects.
+Analogy:
+A real-life analogy for the Decorator pattern could be a sandwich shop.
+You can order a basic sandwich, such as a turkey sandwich with lettuce and tomato.
+However, you can also add additional ingredients or toppings, such as bacon, avocado,
+or cheese. Each additional ingredient enhances the basic sandwich, but it doesn't
+fundamentally change its structure. In this analogy, the basic sandwich is the object,
+and the additional ingredients are the decorator objects.
+Differences:
+The main difference between the Adapter and Decorator patterns is that the
+Adapter pattern is used to make incompatible interfaces work together,
+while the Decorator pattern is used to add functionality to an existing object.
+The power adapter analogy illustrates the Adapter pattern, as it allows two incompatible interfaces
+(the device plug and the foreign outlet) to work together. The sandwich shop analogy
+illustrates the Decorator pattern, as it allows additional functionality (extra ingredients)
+to be added to an existing object (the sandwich). In both patterns, a wrapper object is used
+to provide the necessary functionality, but the purpose and context of the wrapper object are different.

@@ -1,0 +1,118 @@
+Eventual consistency is a property of distributed systems where all replicas converge to the same
+state over time, even in the presence of concurrent updates. This means that updates made to a replica
+will eventually propagate to all other replicas, but there is no guarantee about when this will happen.
+Eventual consistency is often used in large-scale, distributed systems because it provides a high degree
+of scalability and availability, allowing systems to function even in the face of network partitions and failures.
+EventStoreDB is a database that is designed specifically for event sourcing, a pattern where changes
+to the state of an application are captured as a sequence of immutable events. EventStoreDB provides
+strong support for eventual consistency, making it a great choice for systems that require high
+scalability and availability. Here are some reasons why EventStoreDB is better than MongoDB,
+Kafka, and Cassandra for eventual consistency:
+EventStoreDB has built-in support for event sourcing. This means that it provides tools and
+functionality that make it easy to implement event sourcing patterns in your application.
+This can make it easier to achieve eventual consistency because events are immutable and
+can be easily propagated to all replicas.
+EventStoreDB has a built-in distributed consensus algorithm called Raft. Raft is a widely-used
+algorithm for achieving consensus in distributed systems, and it provides strong guarantees about
+consistency and availability. Raft ensures that all replicas converge to the same state,
+even in the presence of failures and network partitions.
+EventStoreDB provides a powerful query engine that allows you to query events and aggregate
+data in real-time. This means that you can get real-time insights into the state of your system,
+even as it scales to handle large volumes of data.
+EventStoreDB provides support for projections, which are essentially views on your event data.
+Projections allow you to extract meaningful insights from your event data in real-time, making
+it easier to understand the state of your system.
+On the other hand, let's outline the pros and cons of each database:
+MongoDB:
+One of the main strengths of MongoDB is its scalability and strong ad hoc query support. 
+However, when it comes to transactionality, document-based databases like MongoDB are not
+as strong. Although MongoDB recently announced support for multi-document transactions, 
+this new feature currently comes with some limitations. Additionally, there is no easy method
+for pushing new events to clients to optimize performance for processing events.
+Another challenge with MongoDB for Event Sourcing is generating sequence numbers for events.
+Due to eventual consistency in the cluster, MongoDB has no cluster-wide ACID transactions,
+which would be required to achieve the sequencing guarantee. While there are workarounds for
+these problems, they may result in a similar position to that of relational stores.
+MongoDB's schema-less storage makes it easy to save events, but when saving multiple
+events at once to MongoDB, there are challenges. MongoDB natively only supports single
+document transactions, meaning you can choose to save multiple events in a single
+document or save multiple events into multiple documents. 
+Both methods have their drawbacks: if you choose to save multiple events
+in a single document, it increases the complexity when searching for all
+events of a given entity. If you save multiple events into multiple documents,
+you have to use the new multiple document transactions feature of MongoDB,
+which can also increase complexity. Furthermore, MongoDB has no support for a
+global sequence number, which means you need to implement a logic for that by
+yourself to achieve a full sequential read of all events.
+In summary, while MongoDB offers scalability and strong ad hoc query support,
+its eventual consistency model and lack of cluster-wide ACID transactions can
+make it challenging to implement Event Sourcing effectively. Therefore, it may
+not be the best option for projects that rely heavily on this architectural pattern.
+Pros: MongoDB is highly scalable and provides good support for distributed systems.
+It also provides a powerful query language that is easy to use.
+Cons: MongoDB does not provide strong support for eventual consistency, and it can
+be difficult to implement in distributed systems. It also has some limitations in terms of data modeling and querying.
+Pros and cons of Kafka:
+Kafka is a distributed message processing and storage tool that is often mentioned
+in the context of event sourcing due to its focus on handling data streams. However,
+when it comes to eventual consistency, Kafka has some downsides.
+If you use a single topic to store events in Kafka, you can perform a full sequential
+read of all events, but you also have to do this if you want to read all events related
+to a single entity. This can be a performance issue if you have a large number of entities.
+To optimize reading events of a single entity, you can create a topic for each entity,
+but then you have to restore the global order of events by yourself. This can be complex and time-consuming.
+Another possibility is to use partitions for your topic, but this requires even distribution
+of entities across partitions, and you need to write the partitioning function based on this,
+which can be difficult and inefficient.
+Additionally, if you use Kafka as an event store, you have to consider that anyone with access
+to the Kafka instance can read the topics you are using to save your events. This can be a security concern.
+Finally, using Kafka as an event store means ignoring a 
+key rule of event sourcing applications: before you publish an event, you have to store it. With Kafka,
+these steps are combined, so you cannot ensure the storing of an event before publishing it.
+If your Kafka instance fails while you try to store and publish an event, it is lost,
+and you will never know. This is a major issue when it comes to ensuring eventual consistency.
+In summary, while Kafka has some strengths when it comes to processing and storing data streams,
+it may not be the best option for ensuring eventual consistency in event sourcing applications.
+Its focus on messages and partitions can create complexities and performance issues,
+and its design may not be ideal for handling the reading and writing requirements of event data.
+Pros: Kafka is a highly scalable distributed streaming platform that provides good 
+support for event-driven architectures. It also provides good support for real-time
+processing and analytics.
+Cons: Kafka does not provide strong support for eventual consistency, and it can be
+difficult to implement in distributed systems. It also has some limitations in terms of data modeling and querying.
+ Cassandra:
+ Cassandra is a highly scalable distributed NoSQL database that offers a high level of flexibility
+ when it comes to consistency needs for both reads and writes. It was originally designed to handle
+ large amounts of data across multiple commodity servers while providing high availability and fault
+ tolerance. While it has a lot of strengths, there are some significant limitations when
+ it comes to using Cassandra as an event store for event-sourced systems.
+One of the major challenges with Cassandra as an event store is ensuring sequencing numbering
+for events. In order to guarantee sequence ordering in Cassandra, you must utilize its lightweight
+transaction feature, which comes with a considerable performance cost. According to the documentation,
+the lightweight transaction feature should be used sparingly. This means that using Cassandra as
+an event store can lead to significant performance degradation when appending events, which is a
+common operation in event-sourced systems.
+Another limitation of Cassandra is its eventual consistency model, which can make it difficult to
+ensure the accuracy of data in real-time. Eventual consistency is a feature of distributed systems
+that allows for updates to be propagated across the system over time. This means that when data is
+updated in one node of the system, it may not be immediately available in all other nodes.
+While eventual consistency is a great feature for scalability, it can make it difficult 
+to ensure the accuracy of data in real-time, which is critical for many event-sourced systems.
+In addition to these limitations, Cassandra also requires careful tuning and configuration
+to optimize its performance for event-sourced systems. This can be a complex and time-consuming
+process, especially for teams that are new to Cassandra or event-sourced systems in general.
+Overall, while Cassandra offers a lot of strengths when it comes to scalability and flexibility,
+its limitations make it less than ideal as an event store for event-sourced systems.
+Its lightweight transaction feature can lead to significant performance degradation when
+appending events, and its eventual consistency model can make it difficult to ensure the
+accuracy of data in real-time. As a result, teams looking to implement event-sourced systems
+should carefully consider their options before choosing Cassandra as their event store.
+Pros: Cassandra is highly scalable and provides good support for distributed systems.
+It also provides good support for real-time processing and analytics.
+Cons: Cassandra does not provide strong support for eventual consistency, and it can be
+difficult to implement in distributed systems. It also has some limitations in terms of data modeling and querying.
+In conclusion, EventStoreDB is a great choice for systems that require strong support
+for eventual consistency. It provides a powerful query engine, support for event sourcing,
+and a built-in distributed consensus algorithm. MongoDB, Kafka, and Cassandra are also good
+choices for distributed systems, but they may not provide the same level of support for eventual consistency.
+It's important to carefully consider the needs of your system when choosing a database, and to evaluate the pros and cons of each option.

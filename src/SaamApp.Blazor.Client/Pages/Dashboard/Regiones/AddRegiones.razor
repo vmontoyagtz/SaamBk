@@ -1,0 +1,96 @@
+@page "/crear-region"
+@layout AdMainLayout
+<PageTitle>Crear Región - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="dashboard">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="regiones">
+                                    Regiones
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Crear Región</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <EditForm Model="@packageModel">
+                                <DataAnnotationsValidator /> 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Nombre de Region' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="packageModel.PackageName"
+                                            ></SfTextBox>
+                                            <ValidationMessage For="@(() => packageModel.PackageName)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Código Región' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="packageModel.PackagePrice"></SfTextBox>
+                                            <ValidationMessage For="@(() => packageModel.PackagePrice)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mx-auto">
+                                            <div class="input-grouap">
+                                                <SfComboBox TValue="string" TItem="Tipo Región" 
+                                                Placeholder="Status" DataSource="@LocalData" Width="300px">
+                                                    <ComboBoxFieldSettings Value="ID"></ComboBoxFieldSettings>
+                                                </SfComboBox>
+                                                <ValidationMessage For="@(() => packageModel.PackageStatus)"></ValidationMessage>
+                                            </div>
+                                    </div>
+                                    <div class="row justify-content-evenly">
+                                            <div class="col-md-4">
+                                            <button type="button" class="cerrar" @click="back">Cancelar</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <SfButton class="añadir">Crear</SfButton>
+                                            </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code{
+    public class Status
+    {  
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+    List<Status> LocalData = new List<Status> {
+        new Status() { ID= "0", Text= "Activo" },
+        new Status() { ID= "1", Text= "Inactivo" },
+    };
+    private PackageDetails packageModel = new PackageDetails();
+    public class PackageDetails
+    {
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string PackageName { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string PackagePrice { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string PackageStatus { get; set; }
+    }
+}

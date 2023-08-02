@@ -1,0 +1,19 @@
+Since KNIME Analytics Platform is a desktop application, it is not ideal to run it in a Docker container. Instead, you can download the desktop application from the KNIME website and run it directly on your local machine.
+
+KNIME Analytics Platform is designed to be user-friendly and does not require programming skills to perform various data analytics tasks. It is a popular tool for users with varying technical backgrounds, including data analysts, data scientists, and business users. KNIME provides a graphical, drag-and-drop interface that allows you to create data workflows (known as KNIME workflows) without writing code.
+
+Here are some features of KNIME that make it easy to use:
+
+Visual workflow editor: KNIME's visual editor enables you to design data workflows by connecting nodes representing various data operations, such as data import, transformation, analysis, and visualization.
+
+Pre-built nodes: KNIME comes with a rich set of pre-built nodes for various tasks, such as reading and writing data from different sources (e.g., databases, Excel, CSV), data transformation (e.g., filtering, joining, aggregating), data analysis (e.g., clustering, regression, classification), and data visualization (e.g., bar chart, scatter plot, line chart). These nodes make it easy to perform common data tasks without writing any code.
+
+Interactive views: Some nodes in KNIME provide interactive views, allowing you to explore and visualize your data and adjust the node settings directly from the view. This feature enables a more interactive and exploratory data analysis experience.
+
+Extension and integration: KNIME supports a wide range of extensions and integrations with other tools, such as R, Python, and machine learning libraries like TensorFlow and Keras. This allows you to leverage the capabilities of these tools within KNIME workflows, even if you don't have extensive programming skills.
+
+Workflow sharing and collaboration: KNIME workflows can be easily shared with others, enabling collaboration and reuse of workflows across teams. This is particularly useful for organizations with multiple users working on different data projects.
+
+Community support and resources: KNIME has a large and active community that provides various resources like forum discussions, tutorials, and examples, making it easier for new users to learn and get help with KNIME-related questions.
+
+While KNIME Analytics Platform is designed to be easy to use without programming skills, some tasks may still require a basic understanding of data manipulation and analysis concepts. Familiarity with the domain-specific language used in KNIME nodes can also be helpful. However, the learning curve is generally low, and with the resources and community support available, you can quickly become proficient in using KNIME for your data analytics needs.

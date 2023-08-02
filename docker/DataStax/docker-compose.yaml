@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  datastax-studio:
+    image: "datastax/dse-studio:latest"
+    container_name: 'datastax-studio'
+    ports:
+      - "9091:9091"
+    volumes:
+      - datastax-studio-data:/opt/datastax-studio/data
+
+volumes:
+  datastax-studio-data:

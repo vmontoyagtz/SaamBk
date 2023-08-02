@@ -1,0 +1,86 @@
+@page "/crear-rubro-by-region/{countryId}"
+@using Syncfusion.Blazor.Inputs
+@using Microsoft.AspNetCore.Components.Forms 
+<PageTitle>Crear Rubros by El salvador - Saam</PageTitle>
+<div id="rubro">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="dashboard">
+                                    <a>Dashboard</a>
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="rubros">
+                                    <a>Rubros</a>
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Crear Rubro</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body">
+                             <EditForm Model="@areaModel">
+                                <DataAnnotationsValidator />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Nombre del Rubro' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="areaModel.AreaName"
+                                            ></SfTextBox>
+                                            <ValidationMessage For="@(() => areaModel.AreaName)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <SfTextBox Placeholder='Descripción' 
+                                            FloatLabelType='@FloatLabelType.Auto'
+                                            @bind-Value="areaModel.AreaDescription"></SfTextBox>
+                                            <ValidationMessage For="@(() => areaModel.AreaDescription)"></ValidationMessage>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mx-auto">
+                                            <div class="input-grouap">
+                                                <!--<input type="file" id="file" name="file" 
+                                                class="form-control dropify"/>-->
+                                                <SfUploader></SfUploader>
+                                            </div>
+                                    </div>
+                                    <div class="row justify-content-evenly">
+                                            <div class="col-md-4">
+                                            <button type="button" class="cerrar" @click="back">Cancelar</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <SfButton class="añadir">Submit</SfButton>
+                                            </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code{
+    private AreaDetails areaModel = new AreaDetails();
+    public class AreaDetails
+    {
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string AreaName { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string AreaDescription { get; set; }
+         [Required(ErrorMessage = "Please enter {0}.")]
+         public string AreaImage { get; set; }
+    }
+}

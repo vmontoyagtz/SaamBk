@@ -1,0 +1,32 @@
+Connect Superset to your Cassandra database.
+
+Go to the "Sources" dropdown menu in the top navigation bar.
+Select "Databases."
+Click on the "+" button to add a new database.
+Fill in the required fields, including the database name, SQLAlchemy URI (which should include the Cassandra host, port, and keyspace), and any other necessary options.
+Save the configuration.
+Import your table into Superset.
+
+Go to the "Sources" dropdown menu in the top navigation bar.
+Select "Tables."
+Click on the "+" button to add a new table.
+Choose the database you just added and provide the table name ("message_stats" in your case). Save the configuration.
+Create a new chart.
+
+Click on the "Charts" dropdown menu in the top navigation bar.
+Select "Add chart."
+Choose the datasource (the table you imported in step 2).
+Configure your chart visualization and options as desired.
+Create a new dashboard.
+
+Click on the "Dashboards" dropdown menu in the top navigation bar.
+Select "Add dashboard."
+Give your dashboard a name and save it.
+Add the chart you created to the dashboard.
+
+Click on the "Edit dashboard" button on the dashboard you just created.
+Click on the "+" button to add a new component.
+Select the chart you created in step 3.
+Arrange and resize the chart component as desired.
+Save the dashboard.
+Now you should see your dashboard with the chart displaying data from your "message_stats" table in Cassandra.

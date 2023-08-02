@@ -1,0 +1,35 @@
+﻿Strategy Design Pattern:
+The Strategy design pattern is a behavioral pattern that allows you to define a family of algorithms,
+encapsulate each one, and make them interchangeable. This pattern is useful when you want to switch
+algorithms at runtime or when you have multiple algorithms that can solve the same problem.
+In the context of C# Clean Architecture, the Strategy pattern can be used to separate the algorithm
+from the client code, providing a more flexible and maintainable solution.
+Analogy:
+A real-life analogy for the Strategy pattern could be a person who is choosing a mode of
+transportation to get from point A to point B. The person may have multiple options, such
+as walking, biking, driving, or taking public transportation. Each of these options is a
+different algorithm for solving the transportation problem, and they can be encapsulated
+in their own classes. The person can then switch between the transportation options at runtime,
+depending on factors such as weather conditions, traffic, or personal preference.
+State Design Pattern:
+The State design pattern is a behavioral pattern that allows an object to change its
+behavior when its internal state changes. This pattern is useful when you have an object
+with multiple states and transitions between them. In the context of C# Clean Architecture,
+the State pattern can be used to encapsulate the state logic in separate classes,
+making the code more modular and easier to maintain.
+Analogy:
+A real-life analogy for the State pattern could be a traffic light at an intersection.
+The traffic light has multiple states, such as green, yellow, and red, and it transitions
+between these states based on a predefined set of rules. Each state has its own behavior,
+such as allowing traffic to flow or signaling for vehicles to stop. By encapsulating the
+state logic in separate classes, the traffic light can be maintained and updated more easily,
+without affecting the rest of the codebase.
+Differences:
+The main difference between the Strategy and State patterns is that the Strategy
+pattern focuses on encapsulating and swapping out algorithms at runtime, while the
+State pattern focuses on encapsulating and changing an object's behavior based on its
+internal state. In other words, the Strategy pattern is more about choosing the right algorithm
+for the job, while the State pattern is more about managing an object's behavior based on its
+current state. The traffic light analogy illustrates this difference well, as the traffic light's
+behavior changes based on its state, while the transportation analogy shows how different
+algorithms can be chosen based on external factors.

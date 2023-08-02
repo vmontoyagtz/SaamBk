@@ -1,0 +1,6 @@
+# superset_config.py
+
+#import os
+
+SECRET_KEY = '3TfeFNVIGJf4BHJSHh95f424ouU5ENKlVpv8hqCy/V0MUvK5VMlD31V3'
+#SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']

@@ -1,0 +1,24 @@
+Domain Project
+The domain project is the heart of your application, it defines the domain model, entities, value objects, domain services, and domain events. It contains business rules, validation, and behaviors that govern your application's behavior. The domain project should not depend on any other projects and should be independent of technology concerns.
+Application Project
+The application project is responsible for orchestrating business logic and use cases in your application. It depends on the domain project and should use domain objects and services to perform application-specific tasks. It defines interfaces for use cases and provides the application services for interacting with the outside world.
+Infrastructure Project
+The infrastructure project contains the technical details of your application, such as data access, logging, and messaging. It depends on both the domain and application projects and provides implementations for the interfaces defined in the application project. It also contains the configuration and bootstrapping code that ties everything together.
+Presentation Project
+The presentation project is responsible for presenting the application's functionality to the end-users. It depends on the application project and provides a user interface or an API for interaction with the application. The presentation project should be kept thin and focused on presentation concerns only.
+Tests Project
+The tests project contains unit tests, integration tests, and end-to-end tests for your application. It should be independent of any other projects and should cover all aspects of your application's functionality.
+Common Project
+The common project contains shared functionality, constants, and utilities that are used across multiple projects in your solution. It should not depend on any other projects and should be independent of technology concerns.
+Based on the NuGet packages included in the project, it is likely that the project is part of the Presentation Layer.
+Ardalis.ApiEndpoints: This is a library for building API endpoints, which are part of the Presentation Layer.
+AutoMapper.Extensions.Microsoft.DependencyInjection: This is a library for mapping objects to DTOs, which is often done in the Presentation Layer.
+MediatR.Extensions.Microsoft.DependencyInjection: This is a library for registering MediatR dependencies, which are often used in the Application Layer but may also be used in the Presentation Layer.
+Microsoft.AspNetCore.SignalR.Core: This is a library for building real-time web applications, which are part of the Presentation Layer.
+Swashbuckle.AspNetCore, Swashbuckle.AspNetCore.Annotations, Swashbuckle.AspNetCore.SwaggerUI: These are libraries for generating Swagger documentation for your API, which is part of the Presentation Layer.
+Microsoft.AspNetCore.Authentication.JwtBearer: This is a library for implementing authentication and authorization for your API, which is part of the Presentation Layer.
+However, there are some packages that may be used in both the Presentation and Application Layers:
+Microsoft.EntityFrameworkCore: This is a library for data access and is typically used in the Application Layer, but may also be used in the Presentation Layer for simple CRUD operations.
+Microsoft.EntityFrameworkCore.InMemory, Microsoft.EntityFrameworkCore.Relational, Microsoft.EntityFrameworkCore.SqlServer, Microsoft.EntityFrameworkCore.Tools: These are libraries for configuring and accessing a database using Entity Framework Core, which is typically used in the Application Layer but may also be used in the Presentation Layer for simple CRUD operations.
+MediatR: This is a library for implementing Mediator pattern, which is often used in the Application Layer but may also be used in the Presentation Layer.
+Overall, it is important to keep in mind that the separation of concerns between the Presentation and Application Layers can be fuzzy in some cases, and there may be dependencies and libraries that are used in both. However, the main difference is that the Presentation Layer is responsible for presenting the data to the user, while the Application Layer is responsible for implementing business logic and use cases.

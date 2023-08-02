@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaamApp.Maui.Client" Title="DateTime Range Selector"
+             xmlns:sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
+             x:Class="SaamApp.Maui.Client.DateTimeRangeSelectorFeatures">
+    <sliders:SfDateTimeRangeSelector Minimum="2020-01-01"
+                                     Maximum="2021-01-01"
+                                     RangeStart="2020-05-01"
+                                     RangeEnd="2020-09-01"
+                                     ShowTicks="True"
+                                     ShowLabels="True"
+                                     IntervalType="Months">
+        <sliders:SfDateTimeRangeSelector.Tooltip>
+            <sliders:SliderTooltip DateFormat="MM-dd-yyyy" />
+        </sliders:SfDateTimeRangeSelector.Tooltip>
+    </sliders:SfDateTimeRangeSelector>
+</ContentPage>

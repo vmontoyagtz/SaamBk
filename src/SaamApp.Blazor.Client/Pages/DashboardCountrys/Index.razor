@@ -1,0 +1,213 @@
+﻿@page "/dashboard-pais/{countryId}"
+@using SaamBlazor.UI.Client.Services
+@using SaamApp.Domain.ModelsDto
+@using SaamApp.BlazorMauiShared.Models.Country
+@using Microsoft.CodeAnalysis.VisualBasic.Syntax
+@inject CountryIdService CountryIdService
+@layout MainLayout
+<PageTitle>Dashboard - @CountryIdService.countryName</PageTitle>
+<div id="dashboard">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores en la region:</h6>
+                            </center>
+                            <center>
+                                <h6>100</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores hijos:</h6>
+                            </center>
+                            <center>
+                                <h6>100</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores individuales:</h6>
+                            </center>
+                            <center>
+                                <h6>5</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Lista de asesores visto videos</legend>
+                    </fieldset>
+                </div>
+                <br />
+                <br />
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores visto videos:</h6>
+                            </center>
+                            <center>
+                                <h6>7</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores no visto videos:</h6>
+                            </center>
+                            <center>
+                                <h6>7</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Lista de asesores intetos examen</legend>
+                    </fieldset>
+                </div>
+                <br>
+                <br>
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores no aprobado examen:</h6>
+                            </center>
+                            <center>
+                                <h6>7</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card person">
+                        <div class="card-body pt-3">
+                            <center>
+                                <h6>Total asesores aprobaron examen:</h6>
+                            </center>
+                            <center>
+                                <h6>12</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code{
+
+    [Parameter]
+    public string countryId { get; set; }
+    public string countryName { get; set; }
+
+    public CountryDto Country { get; set; }
+    protected int count;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var client = new HttpClient();
+        try
+        {
+            Country = new CountryDto();
+
+            var response = await client.GetFromJsonAsync<GetByIdCountryResponse>($"https://localhost:5257/api/countries/{countryId}");
+            if (response != null)
+            {
+                Country = response.Country;
+                countryName = Country.CountryName;
+                CountryIdService.countryId = countryId;
+                CountryIdService.countryName = countryName;
+           
+            }
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        
+    }
+}
+<style>
+.ulstyle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    list-style-type: none !important;
+    padding-left: 0px !important;
+}
+.controlregion {
+    margin-top: 50px;
+}
+.pagecontent {
+    font-family: sans-serif !important;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.34px;
+    line-height: 24px;
+    margin-top: 10px;
+}
+.list {
+    float: left;
+    line-height: 40px;
+    min-width: 280px;
+    font-family: sans-serif !important;
+    font-size: 19px;
+    color: #0073DC;
+}
+.syncfusion-blazor-index-icons {
+    font-family: "sbicons";
+    color: #0073DC !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    padding-right: 13px;
+    font-size: 18px;
+}
+.productheader {
+    font-family: sans-serif !important;
+    font-size: 19px !important;
+    color: #333333 !important;
+    letter-spacing: 0.41px ;
+}
+.pageheader {
+    font-family: sans-serif !important;
+    font-size: 24px !important;
+    color: #333333 ;
+    font-weight: bold !important;
+}
+</style>

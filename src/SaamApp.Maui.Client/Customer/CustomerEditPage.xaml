@@ -1,0 +1,63 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common1="clr-namespace:SaamApp.Maui.Client.Common"
+             x:Class="SaamApp.Maui.Client.Customer.CustomerEditPage"
+             Title="Edit Customer Page">
+    <StackLayout>
+
+        <!-- loading indicator -->
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+        <Button Text="Send Message" Command="{Binding SendMessageCommand}" />
+        <Label Text="{Binding ReceivedMessage}" />
+     
+        <!-- Refresh Button -->
+        <Button Text="Refresh" Command="{Binding RefreshCommand}" />
+
+        <!-- Customer First Name -->
+        <Label Text="Customer First Name:" />
+        <Entry Text="{Binding CurrentCustomer.CustomerFirstName}">
+            <Entry.Behaviors>
+                <common1:ValidationBehavior PropertyName="CustomerFirstName" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label Text="{Binding Errors[CustomerFirstName]}" TextColor="Red"
+               IsVisible="{Binding Errors[CustomerFirstName], Converter={StaticResource StringHasValueConverter}}" />
+
+        <!-- Customer Last Name -->
+        <Label Text="Customer Last Name:" />
+        <Entry Text="{Binding CurrentCustomer.CustomerLastName}">
+            <Entry.Behaviors>
+                <common1:ValidationBehavior PropertyName="CustomerLastName" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label Text="{Binding Errors[CustomerLastName]}" TextColor="Red"
+               IsVisible="{Binding Errors[CustomerLastName], Converter={StaticResource StringHasValueConverter}}" />
+
+        <!-- Customer Birth Date -->
+        <Label Text="Customer Birth Date:" />
+        <DatePicker Date="{Binding CurrentCustomer.CustomerBirthDate}" />
+
+        <Label Text="Created By:" />
+        <Label Text="{Binding CurrentCustomer.CreatedBy}" />
+
+        <Label Text="Updated At:" />
+        <Label Text="{Binding CurrentCustomer.UpdatedAt}" />
+
+        <Label Text="Updated By:" />
+        <Label Text="{Binding CurrentCustomer.UpdatedBy}" />
+
+        <Label Text="Is Deleted:" />
+        <Switch IsToggled="{Binding CurrentCustomer.IsDeleted}" />
+
+        <Label Text="Tenant Id:" />
+        <Label Text="{Binding CurrentCustomer.TenantId}" />
+
+        <Label Text="Gender Id:" />
+        <Label Text="{Binding CurrentCustomer.GenderId}" />
+
+        <Button Text="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding IsValid}" />
+
+        <Button Text="Delete" Command="{Binding DeleteCommand}" />
+    </StackLayout>
+</ContentPage>

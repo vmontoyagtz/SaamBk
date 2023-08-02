@@ -1,0 +1,80 @@
+What is the Dependency Inversion Principle?
+a) A class should have only one reason to change, meaning it should have only one responsibility or job.
+b) Every component should be fully reusable and packaged properly for reuse by other components.
+c) No business logic or entities should depend on technical implementation.
+d) The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+e) None of the above.
+Answer: c) No business logic or entities should depend on technical implementation.
+Explanation: The Dependency Inversion Principle states that the high-level modules or business logic should not depend on low-level modules or technical implementation. Instead, both should depend on abstractions. This allows for flexibility and easier maintenance of the codebase.
+Which of the following is an example of Dependency Inversion?
+a) A database query class calls a method on a database connection class.
+b) An entity class contains a list of child entity classes.
+c) A service class implements an interface that defines its methods.
+d) A controller class depends on a specific implementation of a repository class.
+e) None of the above.
+Answer: c) A service class implements an interface that defines its methods.
+Explanation: By implementing an interface, the service class is depending on an abstraction rather than a specific implementation. This allows for easier testing and swapping of implementations.
+Which of the following is NOT a benefit of Dependency Inversion?
+a) Easier testing
+b) Flexibility
+c) Tight coupling
+d) Easier maintenance
+e) None of the above.
+Answer: c) Tight coupling.
+Explanation: Dependency Inversion reduces tight coupling between modules and promotes loose coupling through the use of abstractions.
+Which of the following is an example of a dependency inversion in C#?
+a) Inheritance
+b) Encapsulation
+c) Polymorphism
+d) Interfaces
+e) None of the above.
+Answer: d) Interfaces.
+Explanation: Interfaces are a way of defining abstractions that can be implemented by classes. This allows for Dependency Inversion by programming to abstractions rather than specific implementations.
+Which of the following is a violation of Dependency Inversion?
+a) A service class depends on an implementation of a repository class.
+b) An entity class contains a list of child entity classes.
+c) A controller class calls a method on a specific implementation of a service class.
+d) A view class directly accesses the database to retrieve data.
+e) None of the above.
+Answer: d) A view class directly accesses the database to retrieve data.
+Explanation: Directly accessing the database violates Dependency Inversion as it tightly couples the view class with the database implementation. Instead, the view class should depend on an abstraction, such as a service class, that retrieves data from the database.
+Which of the following is a benefit of Dependency Inversion?
+a) Decreased code reuse
+b) Increased coupling between modules
+c) Easier maintenance of the codebase
+d) Increased complexity of the codebase
+e) None of the above.
+Answer: c) Easier maintenance of the codebase.
+Explanation: Dependency Inversion allows for easier maintenance of the codebase by reducing the tight coupling between modules and promoting loose coupling through the use of abstractions.
+Which of the following is an example of a high-level module?
+a) Data Access Layer
+b) Domain Model
+c) User Interface
+d) Repository
+e) Service Layer
+Correct answer: b) Domain Model
+Explanation: The Domain Model is an example of a high-level module, as it contains the business logic of the application and is independent of technical implementation details such as databases or user interfaces. The Data Access Layer, Repository, and Service Layer are examples of low-level modules that depend on the Domain Model. The User Interface is also a low-level module that depends on the Domain Model and the Service Layer.
+Which of the following is NOT a benefit of applying Dependency Inversion Principle?
+a) Improving testability
+b) Reducing coupling between modules
+c) Enhancing maintainability
+d) Reducing code duplication
+e) All of the above are benefits of applying Dependency Inversion Principle.
+Answer: e) All of the above are benefits of applying Dependency Inversion Principle.
+Explanation: The Dependency Inversion Principle provides several benefits, including improving testability, reducing coupling between modules, enhancing maintainability, and reducing code duplication.
+9- What is the role of interfaces in the Dependency Inversion Principle?
+a) Interfaces provide a way to define dependencies between modules.
+b) Interfaces provide a way to define behavior that can be implemented by multiple classes.
+c) Interfaces provide a way to define attributes that can be used by multiple classes.
+d) Interfaces provide a way to define database connections.
+e) None of the above.
+Answer: b) Interfaces provide a way to define behavior that can be implemented by multiple classes.
+Explanation: Interfaces provide a way to define behavior that can be implemented by multiple classes, allowing modules to depend on abstractions rather than concrete implementations.
+10- Which of the following is an example of a violation of the Dependency Inversion Principle?
+a) An entity class depends on a repository interface.
+b) A service class depends on a domain model class.
+c) A controller class depends on a view interface.
+d) A domain model class depends on a data access object class.
+e) All of the above violate the Dependency Inversion Principle.
+Answer: d) A domain model class depends on a data access object class.
+Explanation: The Dependency Inversion Principle states that high-level modules should not depend on low-level modules, and both should depend on abstractions. In this example, the domain model class (a high-level module) is depending on the data access object class (a low-level module), violating the principle.

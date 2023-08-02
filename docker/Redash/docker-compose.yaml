@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:9.6-alpine
+    container_name: redash-postgres
+    environment:
+      - POSTGRES_USER=redash
+      - POSTGRES_PASSWORD=redashpassword
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: redash-redis
+
+  redash:
+    image: redash/redash:latest
+    container_name: redash
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "5000:5000"
+    environment:
+      - REDASH_DATABASE_URL=postgresql://redash:redashpassword@postgres/redash
+      - REDASH_REDIS_URL=redis://redis:6379
+
+  worker:
+    image: redash/redash:latest
+    container_name: redash-worker
+    depends_on:
+      - redash
+    command: worker
+    environment:
+      - REDASH_DATABASE_URL=postgresql://redash:redashpassword@postgres/redash
+      - REDASH_REDIS_URL=redis://redis:6379

@@ -1,0 +1,5 @@
+The Outbox Pattern is a design pattern that is used to ensure reliable message delivery in distributed systems.
+On the other hand, the Event Sourcing pattern is a technique used to capture and persist the state of an application as a sequence of events.
+To tie these patterns together, consider the scenario of an e-commerce website that needs to send order confirmation emails to customers.
+When a customer places an order, the website would use the Outbox Pattern to store the order details in an outbox table. A separate process would then read the order details from the outbox table and send an order confirmation email to the customer. As part of this process, the website could use the Event Sourcing pattern to capture and persist the state of the order confirmation email process as a sequence of events. By doing so, the website would have a complete record of all order confirmation emails that were sent, including the date and time they were sent, and the content of each email.
+In this way, the Outbox Pattern and Event Sourcing pattern can be used together to create a highly reliable and auditable system for sending emails or other types of messages.

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaamApp.Maui.Client.Welcome.WelcomePage"
+             Title="WelcomePage"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             Shell.NavBarIsVisible="False">
+
+     <Grid IgnoreSafeArea="True">
+        <!-- Defining Page background -->
+        <Image Source="bg.jpg" Aspect="AspectFill" />
+
+        <!-- Page content -->
+         <VerticalStackLayout VerticalOptions="End" Padding="30, 0, 30, 50">
+            <Image
+                Source="logo_inicio.png"
+                WidthRequest="250"
+                HeightRequest="150"/>
+
+            <Label 
+                Text="Las asesorías que necesitas en un solo lugar."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratBlack"
+                TextColor="#ffffff"
+                FontSize="21"
+                HorizontalTextAlignment="Center"/>
+
+            <Button
+                Text="Iniciar Sesión"
+                TextTransform="Uppercase"
+                FontSize="16"
+                FontFamily="MontserratBlack"
+                WidthRequest="250"
+                CornerRadius="20"
+                Margin="20"
+                BackgroundColor="#ffffff"
+                TextColor="#013ff7"
+                Clicked="NavigateToLogin"/>
+
+            <Label 
+                Text="¿Primera vez aquí?"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratBlack"
+                TextColor="#ffffff"
+                FontSize="16"
+                HorizontalTextAlignment="Center"/>
+
+            
+                <Label 
+                    Text="Crear Cuenta"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontFamily="MontserratBlack"
+                    TextColor="#ffffff"
+                    TextTransform="Uppercase"
+                    TextDecorations="Underline"
+                    Margin="0, 10, 0, 0"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center">
+                 <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                         Tapped="NavigateToRegister" />
+                </Label.GestureRecognizers>
+            </Label>
+        
+
+         </VerticalStackLayout>
+    </Grid>
+</ContentPage>

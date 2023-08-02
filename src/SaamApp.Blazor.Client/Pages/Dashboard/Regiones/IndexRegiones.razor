@@ -1,0 +1,114 @@
+@page "/regiones"
+@layout AdMainLayout
+<PageTitle>Regiones - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/dashboard">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Regiones</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    <div class="row">
+                        @if (Regions != null && Regions.Any())
+                        {
+                            @foreach (var region in Regions)
+                            {
+                                <div class="col-lg-4 mb-4">
+                                    <SfCard ID="HugeImage" Orientation="CardOrientation.Vertical">
+                                        <NavLink class="nav-link" href="@($"dashboard-region/{region.RegionId}")">
+                                            <CardImage Image="@($"images/{region.RegionName}.png")"></CardImage>
+                                        </NavLink>
+                                        <CardContent>
+                                            <div class="row">
+                                                <center>
+                                                    <NavLink class="nav-link" href="@($"dashboard-region/{region.RegionId}")">
+                                                        <h6>@region.RegionName</h6>
+                                                    </NavLink>
+                                                </center>
+                                            </div>
+                                        </CardContent>
+                                    </SfCard>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>No se encontraron datos.</p>
+                        }
+                        <div class="col-lg-4 mb-4">
+                           <SfCard ID="HugeImage" Orientation="CardOrientation.Vertical">
+                                <NavLink class="nav-link" href="crear-region">
+                                    <CardImage Image="images/plus2.png"></CardImage>
+                                </NavLink>
+                                <CardContent>
+                                    <div class="row">
+                                        <center>
+                                            <NavLink class="nav-link" href="crear-region">
+                                                <h6>Ingresar Nueva región</h6>
+                                            </NavLink>
+                                        </center>
+                                    </div>
+                                </CardContent>
+                            </SfCard>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@using SaamApp.BlazorMauiShared.Models.Country;
+@using SaamApp.Domain.ModelsDto
+@using SaamApp.BlazorMauiShared.Models.Region
+@using Newtonsoft.Json.Linq
+@code {
+    public List<RegionDto> Regions { get; set; }
+    public List<CountryDto> Countries { get; set; }
+    protected int count;
+    protected override async Task OnInitializedAsync()
+    {
+        using var client = new HttpClient();
+        try
+        {
+            Regions = new List<RegionDto>();
+            var response = await client.GetFromJsonAsync<ListRegionResponse>($"https://localhost:5257/api/regions");
+            if (response != null && response.Regions.Any())
+            {
+                Regions = response.Regions;
+            }
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+
+    protected async Task OnRegionCardClick(System.Guid RegionId)
+    {
+        using var client = new HttpClient();
+        try
+        {
+            Countries = new List<CountryDto>();
+        
+            var response = await client.GetFromJsonAsync<ListCountryResponse>($"https://localhost:5257/api/getcountriesbyregionid/{RegionId}");
+            if (response != null && response.Countries.Any())
+            {
+                Countries = response.Countries;
+            }
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+}

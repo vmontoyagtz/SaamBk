@@ -1,0 +1,5 @@
+go into Windows powershell / cmd and enter: 
+
+wsl --shutdown
+
+This shuts it down.

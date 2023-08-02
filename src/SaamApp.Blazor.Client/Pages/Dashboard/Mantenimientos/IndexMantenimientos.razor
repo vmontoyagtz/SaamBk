@@ -1,0 +1,230 @@
+@page "/mantenimientos"
+@using SaamBlazor.UI.Client.Common
+@using SaamBlazor.UI.Client.Common
+@inject BlazorServerSignalRService BlazorServerSignalRService
+@inject SaamApiSignalRService SaamApiSignalRService
+@implements IDisposable
+@layout AdMainLayout
+<PageTitle>Mantenimientos - Saam</PageTitle>
+<div id="region">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/dashboard">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Mantenimientos</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="tipo-regiones">
+                                    <div class="card-head2" style="background-image: url(/images/mundo.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="tipo-regiones">
+                                            <h6>Tipo de Regiones</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="bancos">
+                                    <div class="card-head2" style="background-image: url(/images/bancos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="bancos">
+                                            <h6>Bancos</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="tipo-de-productos">
+                                    <div class="card-head2" style="background-image: url(/images/productos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="tipo-de-productos">
+                                            <h6>Tipo de Productos</h6>
+                                          
+                                        </NavLink>
+                                        <h6 style="color:red" >@messageBlazor</h6>
+                                        <button @onclick="SendMessageBlazor">Send Blazor</button>
+                                <h6 style="color:red">@messageApi</h6>
+                                        <button @onclick="SendMessageApi">Send Api</button>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="roles">
+                                    <div class="card-head2" style="background-image: url(/images/roles.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="roles">
+                                            <h6>Roles</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="status-asesores">
+                                    <div class="card-head2" style="background-image: url(/images/estados.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="status-asesores">
+                                            <h6>Estado Asesores</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="administracion">
+                                    <div class="card-head2" style="background-image: url(/images/administracion.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="administracion">
+                                            <h6>Administración</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="tipo-de-documentos">
+                                    <div class="card-head2" style="background-image: url(/images/documentos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="tipo-de-documentos">
+                                            <h6>Tipo de Documentos</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="comisiones">
+                                    <div class="card-head2" style="background-image: url(/images/comisiones.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="comisiones">
+                                            <h6>Comsiones</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code{
+
+    
+    private string messageBlazor;
+    private string messageApi;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await BlazorServerSignalRService.ConnectAsync();
+        BlazorServerSignalRService.OnMessageReceived(receivedMessage =>
+        {
+            messageBlazor = receivedMessage;
+            StateHasChanged();
+        });
+
+        await SaamApiSignalRService.ConnectAsync();
+        SaamApiSignalRService.OnMessageReceived(receivedMessage =>
+        {
+            messageApi = receivedMessage;
+            StateHasChanged();
+        });
+    }
+
+    private async Task SendMessageBlazor()
+    {
+        await BlazorServerSignalRService.FromClientSendMessageToOthersConnectedToBlazorServerAsync("Hello, SignalR! from balzor Maintanance");
+    }
+
+    private async Task SendMessageApi()
+    {
+        await SaamApiSignalRService.FromClientSendMessageToOthersConnectedToSaamApiServerAsync("Hello, SignalR! using SaamAPI");
+    }
+
+    public void Dispose()
+    {
+        BlazorServerSignalRService.RemoveMessageReceivedHandler();
+        Task.Run(BlazorServerSignalRService.DisconnectAsync);
+
+        SaamApiSignalRService.RemoveMessageReceivedHandler();
+        Task.Run(SaamApiSignalRService.DisconnectAsync);
+    }
+
+}

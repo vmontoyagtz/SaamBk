@@ -1,0 +1,39 @@
+﻿the Event Sourcing pattern and the Observer pattern are not the same, 
+even though they can be used together in some scenarios.
+Event Sourcing pattern:
+The Event Sourcing pattern is a way of storing the state of an application as a
+series of events that have occurred over time. Instead of storing the current state
+of an object, the application records a sequence of events that describe changes to
+the object's state over time. This makes it possible to replay the events to reconstruct
+the object's state at any point in time.
+An analogy for the Event Sourcing pattern could be a security camera that records a 
+sequence of events over time. Instead of storing a snapshot of the current state of a room,
+the camera records a sequence of events that show what happened in the room over time. 
+This allows the security team to replay the footage to understand what happened in the 
+room at any point in time, even if the current state of the room has changed.
+Observer pattern:
+The Observer pattern defines a one-to-many dependency between objects, where changes to 
+one object are automatically propagated to other objects that depend on it. 
+When the state of the observed object changes, all its dependent objects are notified and updated automatically.
+An analogy for the Observer pattern could be a sports game with spectators in the stands.
+When one team scores a goal, the spectators on that team's side of the field cheer and celebrate,
+while the spectators on the opposing team's side feel disappointed and dejected. 
+The event of the goal being scored is propagated to all the spectators in the stands,
+who react differently based on their individual preferences.
+Difference:
+The difference between the two patterns is that the Event Sourcing pattern 
+is concerned with recording and replaying a sequence of events that describe changes 
+to an object's state over time, while the Observer pattern is concerned with notifying 
+and updating dependent objects automatically when the state of an observed object changes.
+The Event Sourcing pattern is primarily used for auditing, analysis, or historical record-keeping, 
+while the Observer pattern is used for real-time notifications and event-driven behavior.
+The main differences between these patterns are:
+Purpose: The Event Sourcing pattern is used to record and reconstruct
+application state over time, while the Observer pattern is used to automatically notify dependent
+objects of state changes.
+Scope: Event Sourcing pattern is an architectural pattern that affects how an entire
+application is designed and developed. The Observer pattern is focused on the relationship
+between a subject and its observers.
+Implementation: The Event Sourcing pattern involves
+storing and retrieving event objects to recreate application state. The Observer pattern
+uses the subject-observer relationship and event handling to notify observers of state changes.

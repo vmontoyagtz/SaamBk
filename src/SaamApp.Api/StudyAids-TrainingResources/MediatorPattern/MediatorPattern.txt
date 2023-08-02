@@ -1,0 +1,184 @@
+The use of reflection in MediatR can impact performance, as it involves analyzing the application's types at runtime. However, the performance impact of using MediatR depends on the specific use case and the amount of reflection being performed.
+In general, MediatR is designed to promote loose coupling and modularity in an application, which can help to improve performance by reducing the complexity of object interactions and making it easier to optimize individual components. Additionally, MediatR allows for the use of custom behaviors in the pipeline, which can be used to optimize the handling of requests and improve performance.
+Overall, the performance impact of using MediatR depends on how it is implemented and used in the context of the specific application. While the use of reflection can potentially impact performance, the benefits of using MediatR in terms of modularity, maintainability, and testability may outweigh any potential performance costs.
+The Mediator pattern is a behavioral pattern that promotes loose coupling between objects by using a mediator object
+to manage the interactions between them.
+In this pattern, objects don't communicate with each other directly, but instead send messages to the mediator object,
+which then coordinates the appropriate actions with other objects. This helps to reduce the complexity of the interactions 
+between objects and can make the system easier to maintain and modify over time.
+The Mediator pattern is particularly useful in systems with complex object interactions, or when there are many objects 
+that need to interact with each other in a specific way. It can also help to simplify testing and debugging, as objects 
+are decoupled from each other and interactions are centralized in the mediator.
+In C#, the Mediator pattern can be implemented using interfaces or abstract classes to define the mediator, and events 
+or delegates to handle the communication between objects. The mediator can be injected into objects using dependency 
+injection, and can be responsible for managing the overall state of the system and coordinating the interactions between objects.
+Imagine you're a manager at a busy restaurant. You have servers taking orders from customers, chefs cooking the food, and a cashier handling payments. Sometimes, there may be miscommunication between the servers and chefs, resulting in the wrong food being prepared. Or a customer may want to make a special request that isn't on the menu.
+To streamline this process and ensure that everything runs smoothly, you could implement a mediator who acts as the intermediary between the servers, chefs, and cashier. The mediator would receive the orders from the servers and communicate them to the chefs, making sure that the correct food is prepared. If there's a special request, the mediator could handle it by communicating it to the appropriate party.
+In this scenario, the mediator acts as the MediatR library in a C# application. The servers represent the requests being made by the application, the chefs represent the handlers that process those requests, and the mediator ensures that everything runs smoothly and that each request is handled by the appropriate handler.
+MediatR is a library that enables the implementation of the mediator pattern in ASP.NET Core applications. 
+It provides an implementation of the mediator pattern and allows you to easily decouple your application's 
+components by enabling them to communicate with each other through a mediator.
+oscar
+the mediator uses reflection to find the appropriate handler for that request.
+In MediatR, the mapping between requests and handlers is done through the use of a mediator. When a request is sent to the mediator, the mediator uses reflection to find the appropriate handler for that request.
+Each request in MediatR should implement the IRequest interface, and each handler should implement the IRequestHandler interface with the appropriate request type specified as the generic parameter. For example, if you have a request called CreateUserRequest, you would implement the IRequest interface with CreateUserRequest as the generic parameter.
+Likewise, you would create a handler for the CreateUserRequest by implementing the IRequestHandler interface with CreateUserRequest as the generic parameter. When the mediator receives a CreateUserRequest, it will use reflection to find the appropriate handler for that request, which in this case would be the handler that implements IRequestHandler<CreateUserRequest>.
+Once the appropriate handler is found, MediatR will call the Handle method on the handler and pass in the request as a parameter. The handler is responsible for executing the logic associated with the request and returning a response.
+So, in summary, MediatR maps requests to handlers using reflection and the generic type parameters of the IRequest and IRequestHandler interfaces. When a request is received, MediatR finds the appropriate handler based on the request type and calls the Handle method on that handler.
+At its core, MediatR is simply a mediator that enables loose coupling between components of an application.
+It defines a pipeline for handling requests and allows handlers to be registered and invoked by the mediator.
+The pipeline can be extended with custom behaviors that can perform additional actions before or after the request is handled.
+The basic components of the MediatR library are:
+Request: This is a message that is sent to the mediator to trigger a request. It can be any object that 
+represents a message or a command.
+Handler: This is the component responsible for processing the request. A handler is registered with the
+mediator and receives the request object when it is invoked.
+Mediator: This is the central component that receives requests and delegates them to the appropriate 
+handler. It also provides a mechanism for registering handlers.
+Pipeline: The pipeline is a series of behaviors that are executed before or after the request is handled.
+The pipeline can be extended with custom behaviors to perform additional actions.
+The MediatR library provides a number of abstractions that make it easy to implement the Mediator pattern in .NET applications, including:
+IRequest and IRequestHandler: These are the interfaces that represent the Request and Handler objects.
+IRequestHandler<TRequest, TResponse>: This is an interface that implements the IRequestHandler interface for a specific Request type, with a return type of TResponse.
+IMediator: This is the interface that provides the Mediator object with a Send method that takes an IRequest object and returns an object of the appropriate response type.
+Mediator: This is the concrete implementation of IMediator, and is responsible for coordinating the communication between Requests and Handlers.
+Some of the benefits of using MediatR in your .NET applications include:
+Improved modularity: MediatR enables you to write code that is more modular, organized, and easier to maintain.
+Simplified testing: The Mediator pattern makes it easier to test individual units of work, making it simpler to write unit tests.
+Better performance: The Mediator pattern reduces the need for tight coupling between objects, which can help to improve application performance.
+Separation of concerns: MediatR makes it easy to separate your business logic from your infrastructure and plumbing code, making your codebase more maintainable over time.
+In MediatR, messages are objects that encapsulate data and represent a request or notification
+that needs to be handled by a handler. There are two kinds of messages in MediatR: request/response
+messages and notification messages.
+Request/response messages are messages that are dispatched to a single handler and expect a response.
+They represent a request for some action or data from the application. When a request message is sent,
+it is handled by a single handler that produces a response.
+Notification messages, on the other hand, are messages that are dispatched to multiple handlers and do
+not expect a response. They represent an event or state change in the application that multiple handlers
+may be interested in. When a notification message is sent, it is handled by multiple handlers, 
+each of which may take different actions in response to the event.
+The distinction between request/response messages and notification messages is important because it 
+determines how the messages are handled by the Mediator. 
+Request/response messages are handled by a single handler, 
+whereas notification messages are handled by multiple handlers.
+When you use MediatR, you create a request object and a corresponding handler object.
+The request object represents the input data for a specific operation, and the handler
+object contains the code to perform that operation.
+When you send a request to MediatR, it looks at the request object to determine which
+handler object should handle that request. It does this by using a naming convention 
+that maps the request object to the corresponding handler object.
+For example, if you have a request object called GetCustomerRequest, MediatR will look
+for a handler object called GetCustomerRequestHandler. If it finds one, it will call the
+Handle method on that object and pass in the request object. The Handle method will perform
+the operation and return the response object.
+So in essence, MediatR knows where to find the code to process a request by using a
+naming convention that maps the request to the corresponding handler. This makes it 
+easy to add new operations to your application because you simply need to create a new
+request object and a corresponding handler object, and MediatR will take care of the rest.
+in case that someone is wondering 
+It is possible to have two requests with the same request type but different handlers in MediatR.
+MediatR uses the type of the request to determine which handler to invoke. So, as long as the 
+request types are distinct, you can have multiple handlers for the same request type.
+However, if you have two or more handlers for the same request type, you may need to consider
+which handler should be used for a particular request. MediatR provides several mechanisms for
+controlling how handlers are selected for a request, such as using mediator pipeline behavior or
+specifying the handler to use explicitly.
+--
+Request/response 
+public class AddRequest : IRequest<int>
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+public class SubtractRequest : IRequest<int>
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+public class MultiplyRequest : IRequest<int>
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+public class DivideRequest : IRequest<int>
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+public class AddRequestHandler : IRequestHandler<AddRequest, int>
+{
+    public Task<int> Handle(AddRequest request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(request.A + request.B);
+    }
+}
+public class SubtractRequestHandler : IRequestHandler<SubtractRequest, int>
+{
+    public Task<int> Handle(SubtractRequest request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(request.A - request.B);
+    }
+}
+public class MultiplyRequestHandler : IRequestHandler<MultiplyRequest, int>
+{
+    public Task<int> Handle(MultiplyRequest request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(request.A * request.B);
+    }
+}
+public class DivideRequestHandler : IRequestHandler<DivideRequest, int>
+{
+    public Task<int> Handle(DivideRequest request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(request.A / request.B);
+    }
+}
+var mediator = new Mediator(new ServiceFactory(type => 
+{
+    if (type == typeof(IRequestHandler<AddRequest, int>))
+        return new AddRequestHandler();
+    if (type == typeof(IRequestHandler<SubtractRequest, int>))
+        return new SubtractRequestHandler();
+    if (type == typeof(IRequestHandler<MultiplyRequest, int>))
+        return new MultiplyRequestHandler();
+    if (type == typeof(IRequestHandler<DivideRequest, int>))
+        return new DivideRequestHandler();
+    return null;
+}));
+var addResult = await mediator.Send(new AddRequest { A = 10, B = 20 });
+var subtractResult = await mediator.Send(new SubtractRequest { A = 10, B = 20 });
+var multiplyResult = await mediator.Send(new MultiplyRequest { A = 10, B = 20 });
+var divideResult = await mediator.Send(new DivideRequest { A = 10, B = 20 });
+---
+Notification messages
+public class OrderCreatedNotification : INotification
+{
+    public int OrderId { get; set; }
+    public DateTime OrderDate { get; set; }
+    public decimal TotalAmount { get; set; }
+}
+Now let's say you have two handlers that need to be notified when
+an order is created: EmailNotificationHandler and DatabaseNotificationHandler.
+Here's how you would create these handlers:
+public class EmailNotificationHandler : INotificationHandler<OrderCreatedNotification>
+{
+    public Task Handle(OrderCreatedNotification notification, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+}
+public class DatabaseNotificationHandler : INotificationHandler<OrderCreatedNotification>
+{
+    public Task Handle(OrderCreatedNotification notification, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+}
+To publish the notification message to both handlers, you would use the IMediator.Publish method:
+var notification = new OrderCreatedNotification 
+{
+    OrderId = 123,
+    OrderDate = DateTime.Now,
+    TotalAmount = 100.00m
+};
+await _mediator.Publish(notification);

@@ -1,0 +1,12 @@
+Clean Architecture mainly uses the following Principles:
+Dependency Inversion Principle: No business logic or entities should depend on technical implementation.
+Interface Segregation Principle: An object that uses another object's functionality should use the maximum of the provided interface.
+Single Responsibility Principle: A class should have only one reason to change, meaning it should have only one responsibility or job.
+Open-Closed Principle: The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+Release-Reuse Equivalence Principle: Every component should be fully reusable and packaged properly for reuse by other components.
+Common Closure Principle: This is an extension of the Single Responsibility Principle, meaning that functionalities should only be packaged into one component if it makes sense. A component should only have functionalities that are changed for the same reasons and at the same time.
+Common Reuse Principle: Components should be designed so that users are not dependent on the functionality they do not need. This saves space and memory and optimizes performance.
+Stable Dependencies Principle: Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Stable Abstractions Principle: High-level components should be more abstract and less stable, while low-level components should be more concrete and more stable.
+But No need to feel overwhelmed by these intricate concepts. We'll break them down for you in a step-by-step manner, using easy-to-follow code explanations. Each principle together with the code will be thoroughly explained, ensuring that you have a clear understanding of each idea.
+In addition to the guidance provided throughout the course, students will also have access to the source code of the featured application. It is my fervent hope that the preview video on entities will entice you to enroll and experience the unique way I convey the intricacies of C# patterns.

@@ -1,0 +1,18 @@
+Before exploring event sourcing, it is essential to have a grasp of the distinctions between two commonly used libraries - MediatR and MassTransit.
+MediatR is a library that works by handling requests and notifications through handlers that are responsible for performing the necessary actions. MediatR is great for implementing simple and straightforward request/response patterns, as well as for event-driven architecture.
+Some use cases for MediatR include:
+Handling requests from the user interface, such as creating, updating, or deleting records in a database.
+Responding to events in your application, such as a user logging in or out.
+Implementing CQRS (Command Query Responsibility Segregation) patterns in your application.
+MediatR is like calling a specific person on the phone and asking them to do something for you. You have a direct line of communication with that person and they will respond to you directly. In software terms, MediatR provides direct communication between components in a system.
+When using MediatR, you can only send one request and get back one response. This means that the request is linked to a specific response type, and you can be sure that you will receive a response in the same type as the request.
+MassTransit, on the other hand, is a more powerful library that provides a robust message-based architecture for distributed systems. It allows you to send and receive messages across multiple services and systems, making it great for large-scale distributed applications.
+Some use cases for MassTransit include:
+Building an event-driven architecture that involves multiple services and systems.
+Implementing a distributed message bus that can handle high throughput and low latency scenarios.
+Decoupling your application's services and systems, allows them to operate independently.
+MassTransit is like sending a message to a company's customer service department. You don't know exactly who will respond to your message, but you know that someone will eventually see it and respond to you. In software terms, MassTransit provides a messaging system that allows components to communicate with each other without necessarily knowing the exact recipient of the message.
+One difference between MediatR and MassTransit is that MediatR is focused on request/response patterns, whereas MassTransit is focused on message-based architecture. In addition, MediatR requires that the input payload implements the IRequest or INotification interface, whereas MassTransit only requires a simple POCO (Plain Old CLR Object) class.
+Another important difference is in how they handle crashes and failures. In MediatR, the sender side will crash if the consumer crashes, and the request type is attached to the response type. On the other hand, in MassTransit, the sender side will only receive a response if the consumer publishes it, and the sender side will not crash if the consumer crashes.
+When using MassTransit, you can send one request and get back multiple response types. This means that there is no guarantee that you will receive a response in the same type as the request, and the consumer may even forget to send a response. Additionally, if the consumer sends a response that doesn't match what the sender is expecting, a timeout will also occur
+Overall, MediatR is a great library for implementing simple request/response patterns and event-driven architecture, while MassTransit is better suited for building large-scale distributed systems that require robust message-based architecture.

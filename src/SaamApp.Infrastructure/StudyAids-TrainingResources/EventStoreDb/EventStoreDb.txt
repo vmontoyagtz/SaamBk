@@ -1,0 +1,4 @@
+https://developers.eventstore.com/server/v20.10/installation.html#use-docker-compose
+https://github.com/docker/for-win/issues/9272
+https://www.nuget.org/packages/EventStore.Client.Grpc
+https://www.nuget.org/packages?q=EventStore.Client.Grpc

@@ -1,0 +1,160 @@
+@media (max-width: 575.98px) {
+        .oscuro::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgb(0 0 0 / 80%);
+            z-index: 99;
+        }
+        .breadcrumb {
+            background: #081828;
+        }
+        #sidebar .menu {
+            margin-left: -100%;
+        }
+        #sidebar .bg-saam-gradient {
+            margin-left: -100%;
+            transition: all 0.2s ease-in-out;
+        }
+        #navbar {
+            margin-left: 0;
+            width: 100%;
+        }
+        #navbar .bar {
+            font-size: 24px;
+        }
+        #navbar .profileimg {
+            top: 13px;
+        }
+        .main-content {
+            margin: 0 !important;
+            padding: 60px 0 40px 0;
+        }
+        .container-max {
+            max-width: 90% !important;
+            margin: auto;
+        }
+        #sidebar.active .menu {
+            margin-left: 65px !important;
+            background: #fff;
+        }
+        #navbar.active {
+            margin-left: 295px !important;
+        }
+        #sidebar.active .bg-saam-gradient {
+            margin-left: 0;
+        }
+        #login {
+            min-height: calc(100vh - 56px);
+        }
+        #login .box_form {
+            width: 90vw;
+            padding: 25px 30px 35px 30px;
+        }
+    }
+    @media (max-width: 824px) and (orientation: landscape) {
+    }
+    @media (min-width: 559px) and (max-width: 991.98px) {
+        .oscuro::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgb(0 0 0 / 80%);
+            z-index: 99;
+        }
+        #sidebar .menu {
+            margin-left: -100%;
+        }
+        #sidebar .bg-saam-gradient {
+            margin-left: -100%;
+            transition: all 0.2s ease-in-out;
+        }
+        #navbar {
+            margin-left: 0;
+            width: 100%;
+        }
+        #navbar .bar {
+            font-size: 24px;
+        }
+        #navbar .profileimg {
+            top: 13px;
+        }
+        .main-content {
+            margin: 0 !important;
+            padding: 60px 0 40px 0;
+        }
+        .container-max {
+            max-width: 90% !important;
+            margin: auto;
+        }
+        #sidebar.active .menu {
+            margin-left: 65px !important;
+            background: #fff;
+        }
+        #navbar.active {
+            margin-left: 295px !important;
+        }
+        #sidebar.active .bg-saam-gradient {
+            margin-left: 0;
+        }
+        #login {
+            min-height: calc(100vh - 56px);
+        }
+        #login .box_form {
+            width: 50vw;
+        }
+    }
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        .oscuro::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgb(0 0 0 / 80%);
+            z-index: 99;
+        }
+        #sidebar .menu {
+            margin-left: -100%;
+        }
+        #sidebar .bg-saam-gradient {
+            margin-left: -100%;
+            transition: all 0.2s ease-in-out;
+        }
+        #navbar {
+            margin-left: 0;
+            width: 100%;
+        }
+        #navbar .bar {
+            font-size: 24px;
+        }
+        #navbar .profileimg {
+            top: 13px;
+        }
+        .main-content {
+            margin: 0 !important;
+            padding: 60px 0 40px 0;
+        }
+        .container-max {
+            max-width: 90% !important;
+            margin: auto;
+        }
+        #sidebar.active .menu {
+            margin-left: 65px !important;
+            background: #fff;
+        }
+        #navbar.active {
+            margin-left: 295px !important;
+        }
+        #sidebar.active .bg-saam-gradient {
+            margin-left: 0;
+        }
+        #login {
+            min-height: calc(100vh - 56px);
+        }
+        #login .box_form {
+            width: 40vw;
+        }
+    }
+    

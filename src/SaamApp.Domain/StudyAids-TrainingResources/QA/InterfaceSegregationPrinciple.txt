@@ -1,0 +1,64 @@
+What is the Interface Segregation Principle?
+a) It states that no business logic or entities should depend on technical implementation.
+b) It states that every component should be fully reusable and packaged properly for reuse by other components.
+c) It states that an object that uses another object's functionality should use the maximum of the provided interface.
+d) It states that a class should have only one reason to change, meaning it should have only one responsibility or job.
+e) None of the above.
+Correct answer: c) It states that an object that uses another object's functionality should use the maximum of the provided interface.
+Explanation: The Interface Segregation Principle (ISP) states that an object should not be forced to depend on methods it does not use. Rather, it should use a subset of methods provided by an interface. This promotes decoupling and reduces the risk of unintended consequences.
+How does ISP promote loose coupling?
+a) By allowing clients to use a subset of methods provided by an interface.
+b) By allowing clients to use all the methods provided by an interface.
+c) By allowing clients to use methods that are not provided by an interface.
+d) By allowing clients to use methods that are not relevant to their use case.
+e) None of the above.
+Correct answer: a) By allowing clients to use a subset of methods provided by an interface.
+Explanation: By allowing clients to use only the methods they need, ISP promotes loose coupling between classes, as classes are not dependent on methods that are irrelevant to their use case.
+What is an interface?
+a) A class that cannot be instantiated.
+b) A contract that defines a set of methods that a class must implement.
+c) A way to implement multiple inheritance in C#.
+d) A way to declare static methods in C#.
+e) None of the above.
+Correct answer: b) A contract that defines a set of methods that a class must implement.
+Explanation: An interface in C# is a contract that defines a set of methods that a class must implement. It allows for polymorphism and loose coupling between classes.
+What is a benefit of using interfaces?
+a) They provide a way to implement multiple inheritance in C#.
+b) They allow for polymorphism and loose coupling between classes.
+c) They allow for declaration of static methods in C#.
+d) They allow for implementation of private methods in C#.
+e) None of the above.
+Correct answer: b) They allow for polymorphism and loose coupling between classes.
+Explanation: Interfaces allow for polymorphism, meaning that objects of different classes can be treated as if they are of the same type, as long as they implement the same interface. They also promote loose coupling between classes, as classes are not dependent on concrete implementations.
+Which of the following is an example of a violation of ISP?
+a) A class that implements an interface with too many methods that are not needed by the class.
+b) A class that implements an interface with only the methods that are needed by the class.
+c) A class that does not implement any interface.
+d) A class that implements an interface with the exact same methods that are needed by the class.
+e) None of the above.
+Correct answer: a) A class that implements an interface with too many methods that are not needed by the class.
+Explanation: The Interface Segregation Principle states that clients should not be forced to depend on methods they do not use. If a class implements an interface with too many methods that are not needed by the class, it violates the principle because clients of that class will be forced to depend on those unnecessary methods.
+Which of the following is an example of a low-cohesion interface?
+a) An interface with many unrelated methods.
+b) An interface with only one method.
+c) An interface with methods that all relate to a single responsibility.
+d) An interface that is implemented by multiple classes with different responsibilities.
+e) None of the above.
+Correct answer: a) An interface with many unrelated methods.
+Explanation: A low-cohesion interface is an interface that has many unrelated methods. This is a violation of the Interface Segregation Principle, which states that interfaces should be small and focused on a specific responsibility. If an interface has many unrelated methods, it is not focused on a specific responsibility and is therefore low-cohesion.
+Which of the following is an example of a high-cohesion interface?
+a) An interface with many unrelated methods.
+b) An interface with only one method.
+c) An interface with methods that all relate to a single responsibility.
+d) An interface that is implemented by multiple classes with different responsibilities.
+e) None of the above.
+Correct answer: c) An interface with methods that all relate to a single responsibility.
+Explanation: A high-cohesion interface is an interface that has methods that all relate to a single responsibility. This is in accordance with the Interface Segregation Principle, which states that interfaces should be small and focused on a specific responsibility. If an interface has methods that all relate to a single responsibility, it is focused on that responsibility and is therefore high-cohesion.
+Which of the following is a benefit of following ISP?
+a) Code is easier to understand and maintain.
+b) Code is more flexible and adaptable to change.
+c) Code is more modular and reusable.
+d) Code is less prone to errors and bugs.
+e) All of the above.
+Correct answer: e) All of the above.
+Explanation: Following the Interface Segregation Principle has several benefits. By creating small, focused interfaces, code becomes easier to understand and maintain. It also becomes more flexible and adaptable to change, since changes can be made to specific interfaces without affecting other parts of the code. Additionally, high-cohesion interfaces make code more modular and reusable, while low-cohesion interfaces can lead to errors and bugs.

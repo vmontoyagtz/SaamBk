@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:latest
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      MYSQL_DATABASE: your_mysql_database
+      MYSQL_USER: your_mysql_user
+      MYSQL_PASSWORD: your_mysql_password
+    ports:
+      - 3306:3306
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    volumes:
+      - mssql_data:/var/opt/mssql
+    environment:
+      SA_PASSWORD: your_mssql_sa_password
+      ACCEPT_EULA: Y
+    ports:
+      - 1433:1433
+
+volumes:
+  mysql_data:
+  mssql_data:

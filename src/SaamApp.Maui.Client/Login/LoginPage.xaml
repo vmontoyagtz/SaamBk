@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="SaamApp.Maui.Client.Login.LoginPage"
+             Title="LoginPage"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:localfont="clr-namespace:SaamApp.Maui.Client"
+             ios:Page.UseSafeArea="False"
+             Shell.NavBarIsVisible="False">
+
+     <AbsoluteLayout VerticalOptions="FillAndExpand"  IgnoreSafeArea="True">
+       
+                 
+        <Grid VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <!-- Page content -->
+         <VerticalStackLayout VerticalOptions="FillAndExpand">
+            <Image
+                Source="avatar.png"
+                HeightRequest="90"/>
+
+            <Label 
+                Text="Bienvenido"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratRegular"
+                TextTransform="Uppercase"
+                TextColor="#013ff7"
+                FontSize="14"
+                HorizontalTextAlignment="Center"/>
+
+             <Label
+                Text="Inicia Sesión"
+                FontSize="24"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratBlack"
+                TextColor="#013ff7" />
+
+             <VerticalStackLayout Padding="10, 30, 20, 30">
+                <sf:SfTextInputLayout Hint="Usuario"
+                                      ContainerType="None"
+                                      WidthRequest="300"
+                                      Stroke="#000000"
+                                      ErrorText="Usuario no válido">
+                   <Entry></Entry>
+                   <sf:SfTextInputLayout.HintLabelStyle>
+                       <sf:LabelStyle FontSize="16" FontFamily="MontserratRegular"/>
+                   </sf:SfTextInputLayout.HintLabelStyle>
+                </sf:SfTextInputLayout>
+                <sf:SfTextInputLayout Hint="Contraseña"
+                                    ContainerType="None"
+                                    EnablePasswordVisibilityToggle="True"
+                                    ErrorText="Contraseña no válida"
+                                    WidthRequest="300"
+                                    Stroke="#000000">
+                    <Entry></Entry>
+                    <sf:SfTextInputLayout.HintLabelStyle>
+                        <sf:LabelStyle FontSize="16" FontFamily="MontserratRegular"/>
+                    </sf:SfTextInputLayout.HintLabelStyle>
+                </sf:SfTextInputLayout>
+
+            </VerticalStackLayout>
+            
+
+            <Button
+                Text="Iniciar Sesión"
+                FontSize="14"
+                TextTransform="Uppercase"
+                FontFamily="MontserratBlack"
+                WidthRequest="275"
+                CornerRadius="20"
+                BackgroundColor="#013ff7"
+                TextColor="#ffffff"
+                Clicked="ToLastPage"/>
+
+            <Label 
+                Text="O inicia sesión con:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratRegular"
+                FontSize="16"
+                Margin="25"
+                HorizontalTextAlignment="Center"/>
+
+      
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="1"
+                    FontFamily="FaBrands400"
+                    Text="{x:Static localfont:IconFontClass.Facebook}"
+                    FontSize="30"
+                    Margin="10, 10, 5, 20"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Padding="0"
+                    Clicked="ToLastPage"
+                    Background="#39579a"/>
+                <Button
+                    Grid.Column="2"
+                    FontFamily="FaBrands400"
+                    Text="{x:Static localfont:IconFontClass.Google}"
+                    FontSize="25"
+                    Margin="10, 10, 5, 20"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Clicked="ToLastPage"
+                    Background="#ea4335"/>
+                <Button
+                    Grid.Column="3"
+                    FontFamily="FaBrands400"
+                    Text="{x:Static localfont:IconFontClass.Apple}"
+                    FontSize="30"
+                    Margin="10, 10, 5, 20"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Clicked="ToLastPage"
+                    Background="#000000"/>
+                
+            </Grid>
+
+
+            
+                <Label 
+                    Text="Olvidé mi contraseña"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontFamily="MontserratBlack"
+                    TextTransform="Uppercase"
+                    TextDecorations="Underline"
+                    Margin="0, 25, 0, 0"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center">
+                 <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ToLastPage" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label 
+                Text="Al iniciar sesión aceptas los"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontFamily="MontserratRegular"
+                FontSize="13"
+                Margin="0, 30, 0, 0"
+                HorizontalTextAlignment="Center"/>
+
+            
+                <Label 
+                    Text="Términos y condiciones de servicio"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontFamily="MontserratRegular"
+                    TextDecorations="Underline"
+                    Margin="0, 0, 0, 0"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center">
+                 <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                                     />
+                </Label.GestureRecognizers>
+            </Label>
+        
+
+         </VerticalStackLayout>
+    </Grid>
+
+
+        <Button FontFamily="Icomoon"
+                Text="{x:Static localfont:IconFontClass.ChevronLeft}"
+                AbsoluteLayout.LayoutBounds="-0.08, 0.03, 100, 50"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Margin="0, 20, 0, 0"
+                FontSize="25"
+                BackgroundColor="Transparent"
+                TextColor="#013ff7"
+                Clicked="ToLastPage"
+                ZIndex="999"/>
+
+           <!-- Defining Page background -->
+        <Image Source="top_curve.png"
+               Aspect="AspectFit"
+               VerticalOptions="StartAndExpand"
+               AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All" />
+ 
+    </AbsoluteLayout>
+</ContentPage>

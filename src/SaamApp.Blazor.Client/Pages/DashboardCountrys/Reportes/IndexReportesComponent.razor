@@ -1,0 +1,256 @@
+﻿@page "/reportes/{countryId}"
+<PageTitle>Reportes By El Salvador</PageTitle>
+<div id="asesor">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Reportes</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Compras de Saldo</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-compra-de-saldo">
+                                                    <h5>Resumen de Compra de Saldo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-de-compra-de-saldo">
+                                                     <h5>Detalle de Compra de Saldo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-compra-con-codigos-promocional">
+                                                    <h5>Resumen de Compra con Códigos Promocional</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-consumo-de-saldo-regalado-por-usuarios">
+                                                    <h5>Detalle Consumo de Saldo Regalado por Usuarios</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12 mb-4 mx-auto">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Consumos de Saldo</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-consumo-por-categoria">
+                                                    <h5>Resumen de Consumo por Categoria</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-consumo-por-asesoria">
+                                                    <h5>Detalle de Consumo por Asesoria</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12 mb-4 mx-auto">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Ganancias</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-ganancia-por-categoria">
+                                                    <h5>Resumen de Ganancia por Categoria</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-de-ganancia-por-categoria">
+                                                    <h5>Detalle de Ganancia por Categoria</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12 mb-4 mx-auto">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Pasivos</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-pasivo">
+                                                    <h5>Resumen de Pasivo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-de-pasivo">
+                                                    <h5>Resumen de Pasivo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12 mb-4 mx-auto">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Saldos de Regalo</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="resumen-de-redencion-de-codigos-de-regalo">
+                                                    <h5>Resumen de Redención de Códigos de Regalo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <center>
+                                                <NavLink class="nav-link" href="detalle-de-redencion-de-codigos-de-regalo">
+                                                    <h5>Detalle de Redención de Códigos de Regalo</h5>
+                                                </NavLink>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12 mb-4 mx-auto">
+                    <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3 text-dark">Reportes de Asesores</legend>
+                        <div class="row">
+                            <div class="col-lg-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <center>
+                                            <NavLink class="nav-link" href="resumen-de-pago-a-asesores-por-categoria">
+                                                <h5>Resumen de Pago a Asesores por Categoria</h5>
+                                            </NavLink>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <center>
+                                            <NavLink class="nav-link" href="consolidado-pago-a-los-asesores-con-saldo-regalado">
+                                                <h5>Consolidado Pago a los Asesores con Saldo Regalado</h5>
+                                            </NavLink>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <center>
+                                            <NavLink class="nav-link" href="detalle-pago-a-los-asesores-con-saldo-regalado">
+                                                <h5>Detalle Pago a los Asesores con Saldo Regalado</h5>
+                                            </NavLink>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<style>
+    .ulstyle {
+        margin: 0px;
+        padding-left: 20px;
+        display: inline-block;
+    }
+    .list {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 200px;
+    }
+</style>
+@code{
+}

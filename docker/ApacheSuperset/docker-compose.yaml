@@ -1,0 +1,57 @@
+version: "3.8"
+# http://localhost:8088 in your browser.
+# docker-compose exec superset superset fab create-admin
+# Username: OscarAdmin
+# Password: Password1
+#
+# https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+# https://superset.apache.org/docs/intro
+services:
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    command: >
+      bash -c "flask db upgrade && superset init && superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger"
+
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SUPERSET_ENV=production
+      - SUPERSET_LOAD_EXAMPLES=yes
+      - SUPERSET_USERNAME=oscaradmin
+      - SUPERSET_PASSWORD=Password1
+      - SUPERSET_FIRST_NAME=Oscar
+      - SUPERSET_LAST_NAME=Agreda
+      - SUPERSET_EMAIL=admin@example.com
+      #- SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/${POSTGRES_DB}
+    volumes:
+      - ./superset_config.py:/app/superset_config.py
+
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - 8088:8088
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

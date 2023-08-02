@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaamApp.Maui.Client.ChipGroupFeatures"
+             xmlns:chip="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:viewModel="clr-namespace:SaamApp.Maui.Client">
+    <ContentPage.BindingContext>
+        <viewModel:SfChipGroupViewModel></viewModel:SfChipGroupViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+		<StackLayout>
+        <chip:SfChipGroup x:Name="chip" ItemsSource="{Binding Students}" ChipType="Input"   ChoiceMode="Single" DisplayMemberPath="Name" ImageMemberPath="Image">
+		</chip:SfChipGroup>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

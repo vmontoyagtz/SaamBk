@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SaamApp.Maui.Client.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SaamApp.Maui.Client"
+    xmlns:customer1="clr-namespace:SaamApp.Maui.Client.Customer"
+    xmlns:welcome="clr-namespace:SaamApp.Maui.Client.Welcome"
+    xmlns:onboard="clr-namespace:SaamApp.Maui.Client.Onboarding"
+    xmlns:login="clr-namespace:SaamApp.Maui.Client.Login"
+    xmlns:register="clr-namespace:SaamApp.Maui.Client.Register"
+    xmlns:resetp="clr-namespace:SaamApp.Maui.Client.ResetPassword">
+
+    <!--#region SAAM PAGES -->
+     <ShellContent Title = "Welcome Page" ContentTemplate = "{DataTemplate welcome:WelcomePage}" Route ="WelcomePage" />
+    <ShellContent Title = "Login Page" ContentTemplate = "{DataTemplate login:LoginPage}" Route ="LoginPage" />
+    <ShellContent Title = "Onboarding Page" ContentTemplate = "{DataTemplate onboard:OnboardingPage}" Route ="OnboardingPage" />
+    <ShellContent Title = "Register Page" ContentTemplate = "{DataTemplate register:RegisterPage}" Route ="RegisterPage" />
+    <ShellContent Title = "Reset Password Page" ContentTemplate = "{DataTemplate resetp:ResetPasswordPage}" Route ="ResetPasswordPage" />
+    <!--#endregion-->
+
+    <ShellContent Title = "DataGrid" ContentTemplate = "{DataTemplate local:DataGridFeatures}" Route ="DataGridFeatures" />
+    <ShellContent Title = "Customer Page" ContentTemplate = "{DataTemplate customer1:CustomerEditPage}" Route ="CustomerEditPage" />
+    <ShellContent Title = "Circular Charts" ContentTemplate = "{DataTemplate local:CircularChartsFeatures}" Route ="CircularChartsFeatures" /> 
+    <ShellContent Title = "Linear Gauge" ContentTemplate = "{DataTemplate local:LinearGaugeFeatures}" Route ="LinearGaugeFeatures" /> 
+    <ShellContent Title = "Radial Gauge" ContentTemplate = "{DataTemplate local:RadialGaugeFeatures}" Route ="RadialGaugeFeatures" /> 
+    <ShellContent Title = "PDF Viewer" ContentTemplate = "{DataTemplate local:PDFViewerFeatures}" Route ="PDFViewerFeatures" /> 
+    <ShellContent Title = "Autocomplete" ContentTemplate = "{DataTemplate local:AutocompleteFeatures}" Route ="AutocompleteFeatures" /> 
+    <ShellContent Title = "ComboBox" ContentTemplate = "{DataTemplate local:ComboBoxFeatures}" Route ="ComboBoxFeatures" /> 
+    <ShellContent Title = "DataForm" ContentTemplate = "{DataTemplate local:DataFormFeatures}" Route ="DataFormFeatures" /> 
+    <ShellContent Title = "Rating" ContentTemplate = "{DataTemplate local:RatingFeatures}" Route ="RatingFeatures" /> 
+    <ShellContent Title = "Numeric Entry" ContentTemplate = "{DataTemplate local:NumericEntryFeatures}" Route ="NumericEntryFeatures" /> 
+    <ShellContent Title = "Masked Entry" ContentTemplate = "{DataTemplate local:MaskedEntryFeatures}" Route ="MaskedEntryFeatures" /> 
+    <ShellContent Title = "Calendar" ContentTemplate = "{DataTemplate local:CalendarFeatures}" Route ="CalendarFeatures" /> 
+    <ShellContent Title = "ListView" ContentTemplate = "{DataTemplate local:ListViewFeatures}" Route ="ListViewFeatures" /> 
+    <ShellContent Title = "Text Input Layout" ContentTemplate = "{DataTemplate local:TextInputLayoutFeatures}" Route ="TextInputLayoutFeatures" /> 
+    <ShellContent Title = "Popup" ContentTemplate = "{DataTemplate local:PopupFeatures}" Route ="PopupFeatures" /> 
+    <ShellContent Title = "Accordion" ContentTemplate = "{DataTemplate local:AccordionFeatures}" Route ="AccordionFeatures" /> 
+    <ShellContent Title = "Expander" ContentTemplate = "{DataTemplate local:ExpanderFeatures}" Route ="ExpanderFeatures" /> 
+    <ShellContent Title = "Tab View" ContentTemplate = "{DataTemplate local:TabViewFeatures}" Route ="TabViewFeatures" /> 
+    <ShellContent Title = "Badge View" ContentTemplate = "{DataTemplate local:BadgeViewFeatures}" Route ="BadgeViewFeatures" /> 
+    <ShellContent Title = "Busy Indicator" ContentTemplate = "{DataTemplate local:BusyIndicatorFeatures}" Route ="BusyIndicatorFeatures" /> 
+    <ShellContent Title = "Progress Bar" ContentTemplate = "{DataTemplate local:ProgressBarFeatures}" Route ="ProgressBarFeatures" /> 
+    <ShellContent Title = "Avatar View" ContentTemplate = "{DataTemplate local:AvatarViewFeatures}" Route ="AvatarViewFeatures" /> 
+    <ShellContent Title = "Effects View" ContentTemplate = "{DataTemplate local:EffectsViewFeatures}" Route ="EffectsViewFeatures" /> 
+    <ShellContent Title = "Shimmer" ContentTemplate = "{DataTemplate local:ShimmerFeatures}" Route ="ShimmerFeatures" /> 
+    <ShellContent Title = "Range Selector" ContentTemplate = "{DataTemplate local:RangeSelectorFeatures}" Route ="RangeSelectorFeatures" /> 
+    <ShellContent Title = "DateTime Range Selector" ContentTemplate = "{DataTemplate local:DateTimeRangeSelectorFeatures}" Route ="DateTimeRangeSelectorFeatures" /> 
+    <ShellContent Title = "Range Slider" ContentTemplate = "{DataTemplate local:RangeSliderFeatures}" Route ="RangeSliderFeatures" /> 
+    <ShellContent Title = "Slider" ContentTemplate = "{DataTemplate local:SliderFeatures}" Route ="SliderFeatures" /> 
+    <ShellContent Title = "Chip" ContentTemplate = "{DataTemplate local:ChipFeatures}" Route ="ChipFeatures" /> 
+    <ShellContent Title = "Chip Group" ContentTemplate = "{DataTemplate local:ChipGroupFeatures}" Route ="ChipGroupFeatures" />
+
+
+
+
+</Shell>

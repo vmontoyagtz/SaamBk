@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=pentaho
+      - POSTGRES_PASSWORD=pentaho
+      - POSTGRES_DB=pentaho
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  pentaho:
+    image: webdetails/pentaho-server-ce:9.2.0.0-290
+    environment:
+      - PENTAHO_JAVA_HOME=/usr/lib/jvm/default-jvm
+      - PENTAHO_HOME=/opt/pentaho
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+volumes:
+  pg_data:

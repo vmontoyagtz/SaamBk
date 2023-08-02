@@ -1,0 +1,31 @@
+tool. Here are the steps to create a keyspace:
+
+First, open a terminal and run the following command to access the Cassandra container:
+
+python
+Copy code
+docker exec -it cassandra cqlsh
+This command will start a cqlsh session inside the running Cassandra container.
+
+Now you can create a keyspace by running the following command:
+
+sql
+Copy code
+CREATE KEYSPACE your_keyspace_name WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
+Replace your_keyspace_name with the desired keyspace name, and set the replication_factor according to your needs. For a single-node development setup, you can set the replication factor to 1.
+
+Once the keyspace is created, you can use it by running:
+
+Copy code
+USE your_keyspace_name;
+Replace your_keyspace_name with the name you used when creating the keyspace.
+
+You can now create tables and execute other CQL commands within this keyspace.
+
+To exit the cqlsh session, type exit and press Enter.
+
+
+---------
+
+CREATE KEYSPACE oscar_keyspace_name WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
+USE oscar_keyspace_name;

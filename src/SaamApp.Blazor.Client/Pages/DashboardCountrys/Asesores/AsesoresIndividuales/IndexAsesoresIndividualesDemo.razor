@@ -1,0 +1,99 @@
+@page "/asesores-individuales-demo/{countryId}"
+@inject HttpClient Http
+<PageTitle>Asesores Individuales by El salvador - SAAM</PageTitle>
+<div id="asesor">
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink>
+                                    <a>Dashboard</a>
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="asesores">
+                                    Asesores
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Asesores Individuales</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    <NavLink class="btn-tabla nav-link" href="crear-asesor-individual">
+                        Crear<i class="fas fa-plus-circle fa-1.5x icon-add"></i>
+                    </NavLink>
+                    @{
+                        var Tool = (new List<string>() { "Search","PdfExport","ExcelExport" });
+                    }
+                    <SfGrid DataSource="@Advisors" AllowPaging="true" Toolbar="@Tool" AllowPdfExport="true" AllowExcelExport="true">
+                        <GridPageSettings PageSize="5"></GridPageSettings>
+                        <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="AdvisorDto"></GridEvents>
+                        <GridColumns>
+                            <GridColumn Field=@nameof(AdvisorDto.AdvisorFirstName) HeaderText="Nombre" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(AdvisorDto.AdvisorLastName) HeaderText="Apellido" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(AdvisorDto.AdvisorNote) HeaderText="Email" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(AdvisorDto.AdvisorTitle) HeaderText="Teléfono" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn HeaderText="Acciones" TextAlign="TextAlign.Center">
+                                        <GridCommandColumns>
+                                            <div class="acciones">
+                                        <NavLink href="@($"edit-advisor-demo/{nameof(AdvisorDto.AdvisorId)}")">
+                                                Editar
+                                                </NavLink>
+                                                <a href="javascript:void(0)">Desactivar</a>
+                                             </div>
+                                        </GridCommandColumns>
+                            </GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@using SaamApp.Domain.ModelsDto
+@using SaamApp.BlazorMauiShared.Models.Advisor
+@using Newtonsoft.Json.Linq
+@code{
+    public List<AdvisorDto> Advisors { get; set; }
+    private SfGrid<AdvisorDto> DefaultGrid;
+    protected int count;
+    protected override async Task OnInitializedAsync()
+    {
+        using var client = new HttpClient();
+        try
+        {
+            Advisors = new List<AdvisorDto>();
+            var CountryId = new Guid("5c7246ca-035c-6b44-1034-c0f35397c4e7"); // David reemplace esto por el actual CountryId
+            var response = await client.GetFromJsonAsync<ListAdvisorResponse>($"https://localhost:5257/api/ListAdvisorIndividualByRegionById/{CountryId}");
+            if (response != null && response.Advisors.Any())
+            {
+                Advisors = response.Advisors;
+            }
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+    public async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id == "Grid_pdfexport")
+        {
+            await this.DefaultGrid.PdfExport();
+        }
+    }
+    protected async Task Grid0LoadData(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        using var client = new HttpClient();
+        try
+        {
+        }
+        catch (System.Exception ex)
+        {
+        }
+    }
+}

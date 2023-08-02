@@ -1,0 +1,47 @@
+﻿@page "/rubros/{countryId}"
+<PageTitle>Rubros by El salvador - Saam</PageTitle>
+<div id="rubro">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Rubros</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-4 mb-4">
+                            <SfCard ID="HugeImage" Orientation="CardOrientation.Vertical">
+                                <CardImage Image="images/assets/add.png"/>
+                                <CardContent>
+                                    <div class="row">
+                                        <div class="col-md-6 icono activo">
+                                            <i class="fas fa-check"></i>
+                                            <small>Activado</small>
+                                        </div>
+                                        <div class="col-md-6 add">
+                                            <NavLink class="nav-link add" href="crear-rubro-by-region">Agregar</NavLink>
+                                        </div>
+                                    </div>
+                                    <h6>Nuevo Rubro</h6>
+                                </CardContent>
+                            </SfCard>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@code {
+}

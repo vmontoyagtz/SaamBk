@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - jupyter-data:/home/jovyan/work
+
+volumes:
+  jupyter-data:

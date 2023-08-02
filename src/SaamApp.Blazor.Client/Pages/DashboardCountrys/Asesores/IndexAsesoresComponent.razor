@@ -1,0 +1,209 @@
+﻿@page "/asesores/{countryId}"
+@using SaamBlazor.UI.Client.Common
+@inject BlazorServerSignalRService SignalRService
+@implements IDisposable
+<PageTitle>Asesores By El Salvador - SAAM</PageTitle>
+<div id="asesor">
+            <!--=========Breadcrumb==========-->
+            <section class="main-content">
+                <div class="container-max">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <NavLink class="nav-link" href="/">
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                    <li class="breadcrumb-item active">Asesores</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <!--=========Main==========-->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-padres">
+                                    <div class="card-head2" style="background-image:url(/images/asesores_padres.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-padres">
+                                            <h6>Asesores Padres</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-individuales">
+                                    <div class="card-head2" style="background-image: url(/images/asesores_individuales.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-individuales">
+                                            <h6>Asesores Individuales </h6>
+                                            <h6>@message</h6>
+                                    <button @onclick="SendMessage">Send Message</button>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-padres-inactivos">
+                                    <div class="card-head2" style="background-image: url(/images/asesores_padres_inactivos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-padres-inactivos">
+                                            <h6>Asesores Padre Inactivos</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-individuales-inactivos">
+                                    <div class="card-head2" style="background-image: url(/images/asesores_individuales_inactivos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-individuales-inactivos">
+                                            <h6>Asesores Individuales Inactivos</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-hijos-inactivos">
+                                    <div class="card-head2" style="background-image: url(/images/asesores_hijos_inactivos.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-hijos-inactivos">
+                                            <h6>Asesores Hijos Inactivos</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-ratings">
+                                    <div class="card-head2" style="background-image: url(/images/raitings.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-ratings">
+                                            <h6>Ratings asesores</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-registro-sesiones">
+                                    <div class="card-head2" style="background-image: url(/images/registro_sesiones.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-registro-sesiones">
+                                            <h6>Registro de sesiones</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card person">
+                                <NavLink class="nav-link" href="asesores-por-rubro">
+                                    <div class="card-head2" style="background-image: url(/images/asesores_rubros.png)">
+                                    </div>
+                                </NavLink>
+                                <div class="card-body pt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 edit">
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <NavLink class="nav-link" href="asesores-por-rubro">
+                                            <h6>Asesores por rubros</h6>
+                                        </NavLink>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+@code {
+
+    private string message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SignalRService.ConnectAsync();
+        SignalRService.OnMessageReceived(receivedMessage =>
+        {
+            message = receivedMessage;
+            // This tells Blazor that the state has changed and it needs to re-render the component.
+            StateHasChanged();
+        });
+    }
+
+    private async Task SendMessage()
+    {
+        await SignalRService.FromClientSendMessageToOthersConnectedToBlazorServerAsync("Hello, SignalR! From Blazor WebAssembly");
+    }
+
+    public void Dispose()
+    {
+        SignalRService.RemoveMessageReceivedHandler();
+        Task.Run(SignalRService.DisconnectAsync);
+    }
+
+
+}

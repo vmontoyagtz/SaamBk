@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaamApp.Maui.Client"      
+             x:Class="SaamApp.Maui.Client.Onboarding.OnboardingPage"
+             Shell.NavBarIsVisible="False">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" /> <!-- Row for CarouselView -->
+                <RowDefinition Height="Auto" /> <!-- Row for IndicatorView -->
+            </Grid.RowDefinitions>
+
+            <CarouselView Grid.Row="0" IndicatorView="myIndicatorView" Loop="False" ItemsSource="{Binding OnboardSteps}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="600, auto">
+                            <Grid RowDefinitions="500, 20">
+                                <Image
+                                    Source="{Binding OnboardingImage}"
+                                    Aspect="AspectFit"
+                                    Grid.Row="0" />
+
+                                <StackLayout Grid.Row="1">
+                                    <Label
+                                        Text="{Binding OnboardingTitle}"
+                                        FontSize="24"
+                                        FontFamily="MontserratBlack"
+                                        TextColor="#013ff7"
+                                        HorizontalTextAlignment="Center"
+                                        Margin="15"/>
+
+                                    <Label
+                                        Text="{Binding OnboardingDescription}"
+                                        FontSize="16"
+                                        FontFamily="MontserratRegular"
+                                        TextColor="Black"
+                                        HorizontalTextAlignment="Center" />
+                        
+                                </StackLayout>
+                        
+                            </Grid>
+
+                        <Button
+                            Grid.Row="1"
+                            BackgroundColor="#013ff7"
+                            IsVisible="{Binding IsLastItem}"
+                            Text="Comencemos"
+                            FontSize="16"
+                            FontFamily="MontserratBlack"
+                            WidthRequest="150"
+                            Margin="20"
+                            Clicked="NavigateToWelcomePage"/>
+                       
+                        </Grid>
+                    </DataTemplate>
+                
+                </CarouselView.ItemTemplate>
+                
+            </CarouselView>
+             <!-- IndicatorView -->
+             <IndicatorView x:Name="myIndicatorView"
+                            Grid.Row="1"
+                            IndicatorColor="Gray"
+                            SelectedIndicatorColor="#013ff7"
+                            Count="{Binding OnboardSteps.Count}" />
+
+    </Grid>
+</ContentPage>

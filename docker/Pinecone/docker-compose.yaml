@@ -1,0 +1,30 @@
+version: '3.9'
+# http://localhost:8000
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myapp:latest
+    container_name: myapp_web
+    restart: always
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=8000
+      - REDIS_URL=redis://cache:6379
+    ports:
+      - "8000:8000"
+    depends_on:
+      - cache
+
+  cache:
+    image: "redis:alpine"
+    container_name: myapp_cache
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

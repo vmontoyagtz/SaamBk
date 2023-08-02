@@ -1,0 +1,80 @@
+What is the purpose of Clean Architecture?
+a) To separate business logic from infrastructure and presentation layers.
+b) To combine business logic and infrastructure into a single layer.
+c) To separate presentation layer from business logic and infrastructure.
+d) To merge all layers into a single layer.
+e) None of the above.
+Correct Answer: a) To separate business logic from infrastructure and presentation layers.
+Explanation: The Clean Architecture separates the application's business logic from its implementation details, while Domain-Driven Design focuses on modeling the business logic based on the real-world domain.
+Which principle of Clean Architecture states that dependencies should be in the direction of stability?
+a) Dependency Inversion Principle.
+b) Interface Segregation Principle.
+c) Single Responsibility Principle.
+d) Stable Dependencies Principle.
+e) None of the above.
+Correct Answer: d) Stable Dependencies Principle.
+Explanation: According to the Stable Dependencies Principle, dependencies should be in the direction of stability, with more stable components depending on less stable components.
+What is the purpose of Value Objects in Domain-Driven Design?
+a) To encapsulate attributes and behaviors that can be moved out of the entity itself.
+b) To provide a unique identifier for each entity.
+c) To encapsulate business logic for each entity.
+d) To enforce database constraints.
+e) None of the above.
+Correct Answer: a) To encapsulate attributes and behaviors that can be moved out of the entity itself.
+Explanation: Value Objects encapsulate attributes and behaviors that can be moved out of the entity itself, making them immutable and enforcing important constraints (invariants).
+Which of the following is a principle of Interface Segregation?
+a) An object that uses another object's functionality should use the maximum of the provided interface.
+b) A class should have only one reason to change, meaning it should have only one responsibility or job.
+c) The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+d) Every component should be fully reusable and packaged properly for reuse by other components.
+e) None of the above.
+Correct Answer: a) An object that uses another object's functionality should use the maximum of the provided interface.
+Explanation: The Interface Segregation Principle states that an object that uses another object's functionality should use the maximum of the provided interface.
+What is the purpose of the Single Responsibility Principle?
+a) A class should have only one reason to change, meaning it should have only one responsibility or job.
+b) An object that uses another object's functionality should use the maximum of the provided interface.
+c) The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+d) Every component should be fully reusable and packaged properly for reuse by other components.
+e) None of the above.
+Correct Answer: a) A class should have only one reason to change, meaning it should have only one responsibility or job.
+Explanation: The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have only one responsibility or job.
+What is the purpose of the Open-Closed Principle?
+a) The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+b) Every component should be fully reusable and packaged properly for reuse by other components.
+c) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+d) A class should have only one reason to change, meaning it should have only one responsibility or job.
+e) None of the above.
+Answer: a) The code structure should be designed so that the behavior of a class can be changed by adding new code, not modifying existing code.
+Explanation: The Open-Closed Principle states that a code structure should be designed in a way that allows the behavior of a class to be changed by adding new code, rather than modifying the existing code. This principle is important because it promotes code reuse and makes it easier to maintain and extend the system over time. By adhering to the Open-Closed Principle, we can avoid breaking existing code when making changes and reduce the risk of introducing bugs or unintended consequences.
+What does the Common Closure Principle state?
+a) A class should have only one responsibility or job.
+b) A component should only have functionalities that are changed for the same reasons and at the same time.
+c) Every component should be fully reusable and packaged properly for reuse by other components.
+d) No business logic or entities should depend on technical implementation.
+e) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Answer: b) A component should only have functionalities that are changed for the same reasons and at the same time.
+Explanation: The Common Closure Principle is an extension of the Single Responsibility Principle, and it states that functionalities should only be packaged into one component if it makes sense. A component should only have functionalities that are changed for the same reasons and at the same time.
+What does the Common Reuse Principle state?
+a) A class should have only one responsibility or job.
+b) A component should only have functionalities that are changed for the same reasons and at the same time.
+c) Every component should be fully reusable and packaged properly for reuse by other components.
+d) No business logic or entities should depend on technical implementation.
+e) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Answer: c) Every component should be fully reusable and packaged properly for reuse by other components.
+Explanation: The Common Reuse Principle states that components should be designed so that users are not dependent on the functionality they do not need. This saves space and memory and optimizes performance.
+What does the Stable Dependencies Principle state?
+a) A class should have only one responsibility or job.
+b) A component should only have functionalities that are changed for the same reasons and at the same time.
+c) Every component should be fully reusable and packaged properly for reuse by other components.
+d) No business logic or entities should depend on technical implementation.
+e) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Answer: e) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Explanation: The Stable Dependencies Principle states that dependencies should be in the direction of stability, with more stable components depending on less stable components.
+What does the Stable Abstractions Principle state?
+a) High-level components should be more abstract and less stable, while low-level components should be more concrete and more stable.
+b) A component should only have functionalities that are changed for the same reasons and at the same time.
+c) Every component should be fully reusable and packaged properly for reuse by other components.
+d) No business logic or entities should depend on technical implementation.
+e) Dependencies should be in the direction of stability, with more stable components depending on less stable components.
+Answer: a) High-level components should be more abstract and less stable, while low-level components should be more concrete and more stable.
+Explanation: The Stable Abstractions Principle states that high-level components should be more abstract and less stable, while low-level components should be more concrete and more stable. This ensures that higher-level components can be easily modified without affecting the lower-level components.

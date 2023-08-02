@@ -1,0 +1,25 @@
+ApacheNiFi
+ApacheSpark
+ApacheSuperset
+Cassandra
+DataStax
+JupyterNotebook
+Elasticsearch
+EventStoreDb
+Grafana
+Kafka
+MetaBase
+Postgres
+Kibana
+KNIMEAnalyticsPlatform
+Metabase
+MongoDb
+Pentaho
+Pinecone
+RabbitMq
+Redash
+Pyton panda 
+all the paython libraries to quicky create analisis from sal data using alquemy conectros and then we can just use panda and numpy to create a dataframe to analise data then can use pit from matplotlib to plot 
+
+or we can use python power using https://github.com/andfanilo/streamlit-echarts so analize data , the sql data we could connect with alqueme then use panda then the charts 
+

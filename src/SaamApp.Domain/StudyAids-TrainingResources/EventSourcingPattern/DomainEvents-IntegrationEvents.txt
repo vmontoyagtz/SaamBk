@@ -1,0 +1,63 @@
+Domain Events and Integration Events are two types of events in a distributed system that serve different purposes.
+Domain Events are events that are raised within a single microservice to signal that something has
+happened in that microservice that other parts of the same microservice should be aware of.
+They are part of the ubiquitous language of the domain and represent changes in the domain model.
+Domain Events are typically handled synchronously within the same transaction that generates them,
+and they are not published to external systems.
+Integration Events, on the other hand, are messages that are sent between microservices or external
+systems to signal that something has happened in a microservice that other microservices or external
+systems should be aware of. They are used for out-of-process communication and enable loosely coupled
+communication between different systems in a distributed architecture. Integration Events are typically
+published asynchronously to an external message broker or event bus and can be handled by multiple subscribers.
+In summary, Domain Events are used for intra-service communication within a single microservice,
+while Integration Events are used for inter-service communication between multiple microservices
+or external systems.
+In a microservices architecture, different microservices typically communicate with each other through messages.
+These messages can represent various types of interactions, such as commands, queries, or events.
+When a microservice generates a domain event, it may need to communicate this event to other
+microservices or external systems that are interested in this event. This is where Integration
+Events come into play.
+Integration Events are messages that represent events that have occurred in one microservice
+and need to be communicated to other microservices or external systems. They enable loosely
+coupled communication between different systems in a distributed architecture.
+When a domain event is generated, it should be handled by the corresponding domain event
+handler. If this domain event needs to be communicated to other microservices or external
+systems, the domain event handler should send an Integration Event representing this domain event.
+The Integration Event can then be published to an external message broker or event bus,
+such as RabbitMQ or Kafka. Other microservices or external systems can subscribe to the
+Integration Event and receive notifications when the event occurs.
+It's important to note that Integration Events should be published only after all Domain
+Events have finished executing and saving all changes to the database. This ensures that
+the state of the system is consistent across all microservices and external systems.
+To handle Integration Events in microservices, patterns like Transactional Outbox,
+Change Data Capture, Sagas, or Process Manager can be used to maintain eventual consistency.
+In summary, Integration Events are messages that represent domain events that need to be communicated
+to other microservices or external systems. They enable loosely coupled communication between
+different systems in a distributed architecture, and should be published only after all Domain
+Events have finished executing and saving all changes to the database.
+Integration events are messages that represent communications between different services or
+components of a distributed system. They are often used for out-of-process communication,
+such as calling microservices or external APIs.
+When an integration event is needed, it is the responsibility of the domain event handler
+to send the integration event. This is because the domain event handler has access to all
+the information required to generate the integration event. It is recommended that integration
+events be published only after all domain events have finished executing and saving all changes
+to the database. This ensures that the integration event is consistent with the latest state of the system.
+To handle integration events in microservices, you may need to use an external message broker
+or event bus, such as RabbitMQ or Kafka. Additionally, you may need to use patterns such as
+Transactional Outbox, Change Data Capture, Sagas, or Process Managers to maintain eventual
+consistency across the system.
+The Transactional Outbox pattern involves storing outgoing messages in a database transactionally
+with the domain events that generate them. These messages can then be sent by a separate process
+outside the transaction, ensuring that the sending of the messages is atomic with respect to the
+changes in the database.
+The Change Data Capture pattern involves detecting changes in the database and generating events
+based on those changes. This allows for integration events to be generated automatically based
+on changes in the database.
+Sagas and Process Managers are patterns that can be used to manage complex workflows or transactions
+that involve multiple services. Sagas and Process Managers use a state machine to coordinate the
+different services involved in the transaction, ensuring that the transaction is eventually consistent across all services.
+The Event Sourcing pattern involves storing all changes to the system as events. These events
+can then be used to reconstruct the current state of the system. Event Sourcing is useful for
+systems that need to maintain an audit trail or have complex business rules that are difficult
+to model with a traditional database schema.

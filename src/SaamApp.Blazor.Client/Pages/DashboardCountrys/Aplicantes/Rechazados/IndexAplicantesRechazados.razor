@@ -1,0 +1,109 @@
+@page "/aplicantes-rechazados/{countryId}"
+<PageTitle>Aplicantes Rechazados By El Salvador</PageTitle>
+<div id="mantenimiento">
+    <!--=========Breadcrumb==========-->
+    <section class="main-content">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="/">
+                                    <a>Dashboard</a>
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <NavLink class="nav-link" href="aplicantes">
+                                    <a>Aplicantes</a>
+                                </NavLink>
+                            </li>
+                            <li class="breadcrumb-item active">Aplicantes Rechazados</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--=========Main==========-->
+                <div class="col-md-12">
+                    @{
+                        var Tool = (new List<string>() { "Search","PdfExport","ExcelExport" });
+                    }
+                    <SfGrid DataSource="@Advisors" AllowPaging="true" Toolbar="@Tool" AllowPdfExport="true" AllowExcelExport="true">
+                        <GridPageSettings PageSize="5"></GridPageSettings>
+                        <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="Advisor"></GridEvents>
+                        <GridColumns>
+                            <GridColumn Field=@nameof(Advisor.AdvisorFirstName) HeaderText="Nombre" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorLastName) HeaderText="Apellido" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorNote) HeaderText="Email" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorTitle) HeaderText="Teléfono" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn Field=@nameof(Advisor.AdvisorTitle) HeaderText="Fecha creación solicitud" TextAlign="TextAlign.Center"></GridColumn>
+                            <GridColumn HeaderText="Acciones" TextAlign="TextAlign.Center">
+                                <Template Context="grid">
+                                    <div class="acciones">
+                                        <NavLink class="nav-link" href="editar-asesor-padre">
+                                            Ver
+                                        </NavLink>
+                                        <NavLink class="nav-link" href="">
+                                            Aceptar
+                                        </NavLink>
+                                    </div>
+                                </Template>
+                            </GridColumn>    
+                        </GridColumns>
+                    </SfGrid>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@using System
+@using System.Collections.Generic
+@using System.ComponentModel.DataAnnotations
+@using System.Linq
+@code{
+    public List<Advisor> Advisors { get; set; }
+    private SfGrid<Advisor> DefaultGrid;
+    protected override void OnInitialized()
+    {
+        Advisors = Enumerable.Range(1, 5).Select(x => new Advisor()
+        {
+        }).ToList();
+    }
+    public async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+       if (args.Item.Id == "Grid_pdfexport")
+        {
+            await this.DefaultGrid.PdfExport();
+        }
+    }
+    public class Advisor
+    {
+        [Required(ErrorMessage="Advisor First Name is required")]
+        [MaxLength(191)]
+        public string AdvisorFirstName { get;  set; }
+        [Required(ErrorMessage="Advisor Last Name is required")]
+        [MaxLength(191)]
+        public string AdvisorLastName { get;  set; }
+        [MaxLength(500)]
+        public string? AdvisorNote { get;  set; }
+        [Required(ErrorMessage="Advisor Title is required")]
+        [MaxLength(255)]
+        public string AdvisorTitle { get;  set; }
+        [Required(ErrorMessage="Is Natural Person is required")]
+        public bool IsNaturalPerson { get;  set; }
+        [Required(ErrorMessage="Created At is required")]
+        public DateTime CreatedAt { get;  set; }
+        [Required(ErrorMessage="Created By is required")]
+        public Guid CreatedBy { get;  set; }
+        public DateTime? UpdatedAt { get;  set; }
+        public Guid? UpdatedBy { get;  set; }
+        public bool? IsDeleted { get;  set; }
+        [Required(ErrorMessage="Business Unit is required")]
+        public Guid BusinessUnitId { get;  set; }
+        [Required(ErrorMessage="Gender is required")]
+        public Guid GenderId { get;  set; }
+        [Required(ErrorMessage="Payment Frequency is required")]
+        public Guid PaymentFrequencyId { get;  set; }
+        [Required(ErrorMessage="Tax Information is required")]
+        public Guid TaxInformationId { get;  set; }
+    }
+}
